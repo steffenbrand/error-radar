@@ -1,0 +1,22 @@
+{
+  "name": "error-radar-theme",
+  "description": "error-radar-theme project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steffen Brand",
+  "license": "MIT",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "material-design-icons": "^3.0.1",
+    "propellerkit": "^1.1.0",
+    "run-sequence": "^1.2.2"
+  }
+}

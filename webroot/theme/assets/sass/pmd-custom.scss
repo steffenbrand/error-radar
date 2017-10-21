@@ -1,0 +1,30 @@
+.pmd-content {
+    padding-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    .row {
+        .col {
+            padding-right: 5px;
+            padding-left: 5px;
+            .pmd-card {
+                margin-bottom: 10px;
+                &.pmd-card-success {
+                    background-color: $success-color;
+                    color: #fff;
+                }
+                &.pmd-card-error {
+                    background-color: $error-color;
+                    color: #fff;
+                }
+                .pmd-card-title {
+                    padding: 10px 10px 0 10px;
+                    margin-bottom: 5px;
+                }
+            }
+            h2 {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
