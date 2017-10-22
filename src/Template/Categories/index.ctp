@@ -16,19 +16,24 @@
                         <div class="pmd-card-title">
                             <?php if (null !== $plan->name): ?>
                                 <h3 class="pmd-card-title-text">
-                                    <a target="_blank" href="<?= $plan->link ?>">
-                                        <?= $plan->name ?>
-                                    </a>
+                                    <?= $plan->name ?>
+                                    <?php if (null !== $plan->number && count($category->plans) > 8): ?>
+                                        <span class="badge badge-inverse"><?= $plan->number ?></span>
+                                    <?php endif; ?>
                                 </h3>
+                            <?php else: ?>
+                                <h3 class="pmd-card-title-text"><?= $plan->key ?></h3>
                             <?php endif; ?>
-                            <h4>
-                                <?= $plan->key ?>
-                                <?php if (null !== $plan->number): ?>
-                                    <span class="badge badge-inverse"><?= $plan->number ?></span>
+                            <?php if (count($category->plans) <= 8): ?>
+                                <h4>
+                                    <?= $plan->key ?>
+                                    <?php if (null !== $plan->number): ?>
+                                        <span class="badge badge-inverse"><?= $plan->number ?></span>
+                                    <?php endif; ?>
+                                </h4>
+                                <?php if (true === empty($plan->description)): ?>
+                                    <span class="pmd-card-subtitle-text"><?= $plan->description ?></span>
                                 <?php endif; ?>
-                            </h4>
-                            <?php if (true === empty($plan->description)): ?>
-                                <span class="pmd-card-subtitle-text"><?= $plan->description ?></span>
                             <?php endif; ?>
                         </div>
                     </div>

@@ -21,6 +21,7 @@ class CategoriesController extends AppController
     {
         $categories = $this->Categories
             ->find('all', ['contain' => ['Plans']])
+            ->orderAsc('id')
             ->all();
 
         $columnClass = null;
@@ -39,7 +40,6 @@ class CategoriesController extends AppController
                             $result = $this->BambooClient->getLatestResultByKey($plan->key);
 
                             $plan->name = $result->getPlan()->getShortName();
-                            $plan->link = $result->getPlan()->getLink()->getHref();
                             $plan->state = $result->getState();
                             $plan->number = $result->getNumber();
                         } catch (\Exception $e) {

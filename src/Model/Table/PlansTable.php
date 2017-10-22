@@ -70,10 +70,6 @@ class PlansTable extends Table
             ->allowEmpty('name');
 
         $validator
-            ->scalar('link')
-            ->allowEmpty('link');
-
-        $validator
             ->scalar('state')
             ->allowEmpty('state');
 

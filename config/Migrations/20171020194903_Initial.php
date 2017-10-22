@@ -55,11 +55,6 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => true,
             ])
-            ->addColumn('link', 'string', [
-                'default' => null,
-                'limit' => 255,
-                'null' => true,
-            ])
             ->addColumn('state', 'string', [
                 'default' => null,
                 'limit' => 255,

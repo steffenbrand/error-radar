@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property string $type
  * @property string $key
  * @property string $name
- * @property string $link
  * @property string $state
  * @property int $number
  * @property string $description
@@ -35,7 +34,6 @@ class Plan extends Entity
         'type' => true,
         'key' => true,
         'name' => true,
-        'link' => true,
         'state' => true,
         'number' => true,
         'description' => true,
