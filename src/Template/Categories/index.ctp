@@ -1,26 +1,47 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Category[]|\Cake\Collection\CollectionInterface $categories
+ * @var \App\Model\Entity\Category[]|\Cake\Datasource\ResultSetInterface $categories
  * @var string $columnClass
  */
 ?>
 
 <div class="row">
-    <?php foreach ($categories as $category): ?>
-        <div class="col <?= $columnClass ?>">
-            <h2><?= $category->name ?></h2>
-            <?php foreach ($category->plans as $plan): ?>
-                <div class="pmd-card pmd-z-depth" id="<?= $plan->key ?>">
-                    <div class="pmd-card-title">
-                        <h3 class="pmd-card-title-text"><?= $plan->key ?></h3>
-                        <?php if (true === isset($plan->description)): ?>
-                            <span class="pmd-card-subtitle-text"><?= $plan->description ?></span>
-                        <?php endif; ?>
+    <?php if ($categories->count() > 0): ?>
+        <?php foreach ($categories as $category): ?>
+            <div class="col <?= $columnClass ?>">
+                <h2><?= $category->name ?></h2>
+                <?php foreach ($category->plans as $plan): ?>
+                    <div class="pmd-card pmd-z-depth <?= $plan->state ?>" id="<?= $plan->key ?>">
+                        <div class="pmd-card-title">
+                            <?php if (null !== $plan->name): ?>
+                                <h3 class="pmd-card-title-text">
+                                    <a target="_blank" href="<?= $plan->link ?>">
+                                        <?= $plan->name ?>
+                                    </a>
+                                </h3>
+                            <?php endif; ?>
+                            <h4>
+                                <?= $plan->key ?>
+                                <?php if (null !== $plan->number): ?>
+                                    <span class="badge badge-inverse"><?= $plan->number ?></span>
+                                <?php endif; ?>
+                            </h4>
+                            <?php if (true === empty($plan->description)): ?>
+                                <span class="pmd-card-subtitle-text"><?= $plan->description ?></span>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="col-md-12">
+            <h2><?= __('Oh snap!') ?></h2>
+            <div class="alert alert-warning" role="alert">
+                <?= __('No plans configured') ?>
+            </div>
         </div>
-    <?php endforeach; ?>
+    <?php endif; ?>
 </div>
 

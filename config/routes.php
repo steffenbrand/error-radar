@@ -49,7 +49,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Categories', 'action' => 'index']);
+
+    Router::scope('/api/plans', function (RouteBuilder $routes) {
+        $routes->connect('/view/:id', ['controller' => 'PlansApi', 'action' => 'view'], ['pass' => ['id']]);
+        $routes->connect('/create', ['controller' => 'PlansApi', 'action' => 'create']);
+    });
 
     /**
      * Connect catchall routes for all controllers.

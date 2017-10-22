@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\Entity\Plan;
 use App\Model\Table\PlansTable;
+use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Narrowspark\HttpStatus\HttpStatus;
 use Psr\Log\LogLevel;
@@ -29,10 +30,13 @@ class PlansApiController extends ApiController
         parent::initialize();
 
         $this->Plans = TableRegistry::get('Plans');
+
+        $bambooConfig = Configure::read('BambooClient');
         $this->BambooClient = new BambooClient(
-            'aaa',
-            'yyy',
-            'xxx'
+            $bambooConfig['baseUrl'],
+            $bambooConfig['username'],
+            $bambooConfig['password'],
+            $bambooConfig['timeout']
         );
     }
 

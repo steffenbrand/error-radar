@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use App\Model\Entity\Category;
 
 /**
  * Categories Controller
@@ -22,10 +23,32 @@ class CategoriesController extends AppController
             ->find('all', ['contain' => ['Plans']])
             ->all();
 
-        $columnClass = sprintf(
-            'col-md-%u',
-            floor(12/$categories->count())
-        );
+        $columnClass = null;
+
+        if ($categories->count() > 0) {
+            $columnClass = sprintf(
+                'col-md-%u',
+                floor(12/$categories->count())
+            );
+
+            foreach ($categories as $category) {
+                /** @var Category $category */
+                if (count($category->plans) > 0) {
+                    foreach ($category->plans as $plan) {
+                        try {
+                            $result = $this->BambooClient->getLatestResultByKey($plan->key);
+
+                            $plan->name = $result->getPlan()->getShortName();
+                            $plan->link = $result->getPlan()->getLink()->getHref();
+                            $plan->state = $result->getState();
+                            $plan->number = $result->getNumber();
+                        } catch (\Exception $e) {
+                            $plan->state = 'Error';
+                        }
+                    }
+                }
+            }
+        }
 
         $this->set('categories', $categories);
         $this->set('columnClass', $columnClass);

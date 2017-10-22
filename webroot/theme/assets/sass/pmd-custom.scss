@@ -8,17 +8,37 @@
             padding-left: 5px;
             .pmd-card {
                 margin-bottom: 10px;
-                &.pmd-card-success {
-                    background-color: $success-color;
+                &.Successful {
+                    background-color: $successful-color;
                     color: #fff;
                 }
-                &.pmd-card-error {
+                &.Failed {
+                    background-color: $failed-color;
+                    color: #fff;
+                }
+                .Error {
                     background-color: $error-color;
                     color: #fff;
-                }
-                .pmd-card-title {
                     padding: 10px 10px 0 10px;
                     margin-bottom: 5px;
+                }
+                .pmd-card-title {
+                    padding: 10px;
+                    margin-bottom: 0;
+                    h3 {
+                        margin-top: 0;
+                        a {
+                            color: #fff;
+                            &:hover {
+                                color: #fff;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    h4 {
+                        margin-bottom: 0;
+                        margin-top: 5px;
+                    }
                 }
             }
             h2 {

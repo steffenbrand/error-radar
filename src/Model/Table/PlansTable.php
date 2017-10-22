@@ -66,6 +66,22 @@ class PlansTable extends Table
             ->add('key', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
+            ->scalar('name')
+            ->allowEmpty('name');
+
+        $validator
+            ->scalar('link')
+            ->allowEmpty('link');
+
+        $validator
+            ->scalar('state')
+            ->allowEmpty('state');
+
+        $validator
+            ->integer('number')
+            ->allowEmpty('number');
+
+        $validator
             ->scalar('description')
             ->allowEmpty('description');
 

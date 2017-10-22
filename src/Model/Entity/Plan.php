@@ -9,6 +9,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $type
  * @property string $key
+ * @property string $name
+ * @property string $link
+ * @property string $state
+ * @property int $number
  * @property string $description
  * @property string $error_text
  * @property int $category_id
@@ -30,6 +34,10 @@ class Plan extends Entity
     protected $_accessible = [
         'type' => true,
         'key' => true,
+        'name' => true,
+        'link' => true,
+        'state' => true,
+        'number' => true,
         'description' => true,
         'error_text' => true,
         'category_id' => true,
