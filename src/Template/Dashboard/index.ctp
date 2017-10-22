@@ -51,7 +51,7 @@
 </div>
 
 <div class="pmd-floating-action">
-    <button class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="button">
-        <i class="material-icons pmd-sm">add</i>
-    </button>
+    <a href="<?= $this->Html->Url->build('/admin') ?>" class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="button">
+        <i class="material-icons pmd-sm">edit</i>
+    </a>
 </div>

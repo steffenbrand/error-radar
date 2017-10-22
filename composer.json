@@ -11,8 +11,6 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*",
-        "narrowspark/http-status": "^3.0",
-        "crell/api-problem": "^2.0",
         "steffenbrand/bamboo-api-client": "^1.0"
     },
     "require-dev": {

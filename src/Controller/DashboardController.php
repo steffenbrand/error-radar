@@ -4,13 +4,11 @@ namespace App\Controller;
 use App\Model\Entity\Category;
 
 /**
- * Categories Controller
- *
- * @property \App\Model\Table\CategoriesTable $Categories
+ * Class DashboardController
+ * @package App\Controller
  */
-class CategoriesController extends AppController
+class DashboardController extends AppController
 {
-
     /**
      * Index method
      *
@@ -19,10 +17,7 @@ class CategoriesController extends AppController
      */
     public function index()
     {
-        $categories = $this->Categories
-            ->find('all', ['contain' => ['Plans']])
-            ->orderAsc('id')
-            ->all();
+        $categories = $this->Categories->getCategoriesContainingPlans();
 
         $columnClass = null;
 

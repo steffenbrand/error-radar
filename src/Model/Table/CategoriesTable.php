@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -74,5 +74,19 @@ class CategoriesTable extends Table
         $rules->add($rules->isUnique(['name']));
 
         return $rules;
+    }
+
+    /**
+     * Get all categories containing plans.
+     *
+     * @return \Cake\Datasource\ResultSetInterface
+     * @throws \RuntimeException
+     */
+    public function getCategoriesContainingPlans()
+    {
+        return $this
+            ->find('all', ['contain' => ['Plans']])
+            ->orderAsc('id')
+            ->all();
     }
 }

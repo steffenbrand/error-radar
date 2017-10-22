@@ -6,34 +6,34 @@
         .col {
             padding-right: 5px;
             padding-left: 5px;
-            .pmd-card {
-                margin-bottom: 10px;
-                &.Successful {
-                    background-color: $successful-color;
-                    color: #fff;
-                }
-                &.Failed {
-                    background-color: $failed-color;
-                    color: #fff;
-                }
-                &.Error {
-                    background-color: $error-color;
-                    color: #fff;
-                }
-                .pmd-card-title {
-                    padding: 10px;
-                    margin-bottom: 0;
-                    h3 {
-                        margin-top: 0;
-                    }
-                    h4 {
-                        margin-bottom: 0;
-                        margin-top: 5px;
-                    }
-                }
-            }
             h2 {
                 margin-top: 10px;
+            }
+        }
+    }
+    .pmd-card {
+        margin-bottom: 10px;
+        &.Successful {
+            background-color: $successful-color;
+            color: #fff;
+        }
+        &.Failed {
+            background-color: $failed-color;
+            color: #fff;
+        }
+        &.Error {
+            background-color: $error-color;
+            color: #fff;
+        }
+        .pmd-card-title {
+            padding: 10px;
+            margin-bottom: 0;
+            h3 {
+                margin-top: 0;
+            }
+            h4 {
+                margin-bottom: 0;
+                margin-top: 5px;
             }
         }
     }
