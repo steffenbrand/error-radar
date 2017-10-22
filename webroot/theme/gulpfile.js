@@ -11,7 +11,6 @@ gulp.task('sass', function () {
     gulp.src([
         './node_modules/propellerkit/dist/css/bootstrap.min.css',
         './node_modules/propellerkit/dist/css/propeller.min.css',
-        './dist/fonts/material-design-icons/material-icons.css',
         './assets/sass/main.scss'
     ])
         .pipe(sass().on('error', sass.logError))
@@ -47,11 +46,6 @@ gulp.task('fonts', function () {
     gulp.src([
         './node_modules/material-design-icons/iconfont/MaterialIcons-Regular.*'
     ])
-        .pipe(gulp.dest('./dist/fonts/material-design-icons/'));
-    gulp.src([
-        './node_modules/material-design-icons/iconfont/material-icons.css'
-    ])
-        .pipe(replace('url(MaterialIcons-Regular', 'url(../fonts/material-design-icons/MaterialIcons-Regular'))
         .pipe(gulp.dest('./dist/fonts/material-design-icons/'));
 });
 
