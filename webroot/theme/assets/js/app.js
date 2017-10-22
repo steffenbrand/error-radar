@@ -1,5 +1,7 @@
 $(window).on('load', function() {
 
-    console.log('done');
+    setTimeout(function() {
+        $('#content').css('opacity', '1');
+    }, 200);
 
 });
