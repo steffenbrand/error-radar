@@ -2,12 +2,9 @@
 
 namespace App\Controller;
 
-use Cake\ORM\TableRegistry;
-
 /**
- * Plans Controller
- *
- * @property \App\Model\Table\CategoriesTable $Categories
+ * Class AdminController
+ * @package App\Controller
  */
 class AdminController extends AppController
 {
@@ -19,8 +16,13 @@ class AdminController extends AppController
      */
     public function index()
     {
-        $categories = $this->Categories->getCategoriesContainingPlans();
+        $categories = $this->Categories->findCategoriesContainingPlans();
+        $plans = $this->Plans->findPlansContainingCategoriesAndServers();
+        $servers = $this->Servers->findServersContainingPlans();
+
         $this->set('categories', $categories);
+        $this->set('plans', $plans);
+        $this->set('servers', $servers);
     }
 
     /**

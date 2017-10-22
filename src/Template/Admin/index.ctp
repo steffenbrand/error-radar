@@ -2,7 +2,8 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Category[]|\Cake\Datasource\ResultSetInterface $categories
- * @var string $columnClass
+ * @var \App\Model\Entity\Plan[]|\Cake\Datasource\ResultSetInterface $plans
+ * @var \App\Model\Entity\Server[]|\Cake\Datasource\ResultSetInterface $servers
  */
 ?>
 
@@ -51,14 +52,53 @@
                 <?php endif; ?>
             </div>
             <div role="tabpanel" class="tab-pane" id="plans-fixed">
-                Fixed tabs have equal width, calculated either as the view width divided
-                by the number of tabs, or based on the widest tab label.
-                To navigate between fixed tabs, touch the tab or swipe the content area left or right.
+                <h2><?= __('Plans') ?></h2>
+                <?php if ($plans->count() > 0): ?>
+                    <?php foreach ($plans as $plan): ?>
+                        <div class="pmd-card pmd-z-depth Info">
+                            <div class="pmd-card-title">
+                                <h3 class="pmd-card-title-text">
+                                    <?= $plan->key ?>
+                                    <span class="badge badge-inverse">
+                                        <i class="material-icons md-light pmd-xxs">
+                                            style
+                                        </i>
+                                        <?= $plan->category->name ?>
+                                    </span>
+                                    <span class="badge badge-inverse">
+                                        <i class="material-icons md-light pmd-xxs">
+                                            laptop_mac
+                                        </i>
+                                        <?= $plan->server->name ?>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="alert alert-warning" role="alert">
+                        <?= __('No plans.') ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div role="tabpanel" class="tab-pane" id="servers-fixed">
-                To navigate between scrollable tabs, touch the tab or swipe the
-                content area left or right. To scroll the tabs without navigating,
-                swipe the tabs left or right.
+                <h2><?= __('Servers') ?></h2>
+                <?php if ($servers->count() > 0): ?>
+                    <?php foreach ($servers as $server): ?>
+                        <div class="pmd-card pmd-z-depth Info">
+                            <div class="pmd-card-title">
+                                <h3 class="pmd-card-title-text">
+                                    <?= $server->name ?>
+                                    <span class="badge badge-inverse"><?= count($server->plans) ?></span>
+                                </h3>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="alert alert-warning" role="alert">
+                        <?= __('No plans.') ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

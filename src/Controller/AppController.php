@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\Table\CategoriesTable;
+use App\Model\Table\PlansTable;
+use App\Model\Table\ServersTable;
 use Cake\Controller\Controller;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
@@ -14,7 +17,9 @@ use SteffenBrand\BambooApiClient\Client\BambooClient;
  * will inherit them.
  *
  * @property BambooClient $BambooClient
- * @property \App\Model\Table\CategoriesTable $Categories
+ * @property CategoriesTable $Categories
+ * @property PlansTable $Plans
+ * @property ServersTable $Servers
  *
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
@@ -33,6 +38,8 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
         $this->Categories = TableRegistry::get('Categories');
+        $this->Plans = TableRegistry::get('Plans');
+        $this->Servers = TableRegistry::get('Servers');
 
         $bambooConfig = Configure::read('BambooClient');
         $this->BambooClient = new BambooClient(

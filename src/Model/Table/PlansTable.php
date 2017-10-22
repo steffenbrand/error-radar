@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Plans Model
  *
  * @property \App\Model\Table\CategoriesTable|\Cake\ORM\Association\BelongsTo $Categories
+ * @property |\Cake\ORM\Association\BelongsTo $Servers
  *
  * @method \App\Model\Entity\Plan get($primaryKey, $options = [])
  * @method \App\Model\Entity\Plan newEntity($data = null, array $options = [])
@@ -21,7 +22,6 @@ use Cake\Validation\Validator;
  */
 class PlansTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -40,6 +40,10 @@ class PlansTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('Servers', [
+            'foreignKey' => 'server_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -53,11 +57,6 @@ class PlansTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-
-        $validator
-            ->scalar('type')
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
 
         $validator
             ->scalar('key')
@@ -99,7 +98,22 @@ class PlansTable extends Table
     {
         $rules->add($rules->isUnique(['key']));
         $rules->add($rules->existsIn(['category_id'], 'Categories'));
+        $rules->add($rules->existsIn(['server_id'], 'Servers'));
 
         return $rules;
+    }
+
+    /**
+     * Find all plans containing categories and servers.
+     *
+     * @return \Cake\Datasource\ResultSetInterface
+     * @throws \RuntimeException
+     */
+    public function findPlansContainingCategoriesAndServers()
+    {
+        return $this
+            ->find('all', ['contain' => ['Categories', 'Servers']])
+            ->orderAsc('Plans.id')
+            ->all();
     }
 }

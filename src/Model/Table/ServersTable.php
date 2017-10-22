@@ -7,21 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Categories Model
+ * Servers Model
  *
  * @property \App\Model\Table\PlansTable|\Cake\ORM\Association\HasMany $Plans
  *
- * @method \App\Model\Entity\Category get($primaryKey, $options = [])
- * @method \App\Model\Entity\Category newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Category[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Category|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Category patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Category[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Category findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Server get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Server newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Server[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Server|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Server patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Server[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Server findOrCreate($search, callable $callback = null, $options = [])
  */
-class CategoriesTable extends Table
+class ServersTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -32,12 +31,12 @@ class CategoriesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('categories');
+        $this->setTable('servers');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->hasMany('Plans', [
-            'foreignKey' => 'category_id'
+            'foreignKey' => 'server_id'
         ]);
     }
 
@@ -59,6 +58,26 @@ class CategoriesTable extends Table
             ->notEmpty('name')
             ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
+        $validator
+            ->scalar('url')
+            ->requirePresence('url', 'create')
+            ->notEmpty('url');
+
+        $validator
+            ->scalar('username')
+            ->requirePresence('username', 'create')
+            ->notEmpty('username');
+
+        $validator
+            ->scalar('password')
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        $validator
+            ->scalar('type')
+            ->requirePresence('type', 'create')
+            ->notEmpty('type');
+
         return $validator;
     }
 
@@ -71,6 +90,7 @@ class CategoriesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->isUnique(['username']));
         $rules->add($rules->isUnique(['name']));
 
         return $rules;
@@ -82,11 +102,11 @@ class CategoriesTable extends Table
      * @return \Cake\Datasource\ResultSetInterface
      * @throws \RuntimeException
      */
-    public function findCategoriesContainingPlans()
+    public function findServersContainingPlans()
     {
         return $this
             ->find('all', ['contain' => ['Plans']])
-            ->orderAsc('Categories.id')
+            ->orderAsc('Servers.id')
             ->all();
     }
 }

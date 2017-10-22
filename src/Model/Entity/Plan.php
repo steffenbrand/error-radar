@@ -7,7 +7,6 @@ use Cake\ORM\Entity;
  * Plan Entity
  *
  * @property int $id
- * @property string $type
  * @property string $key
  * @property string $name
  * @property string $state
@@ -15,8 +14,10 @@ use Cake\ORM\Entity;
  * @property string $description
  * @property string $error_text
  * @property int $category_id
+ * @property int $server_id
  *
  * @property \App\Model\Entity\Category $category
+ * @property \App\Model\Entity\Server $server
  */
 class Plan extends Entity
 {
@@ -31,7 +32,6 @@ class Plan extends Entity
      * @var array
      */
     protected $_accessible = [
-        'type' => true,
         'key' => true,
         'name' => true,
         'state' => true,
@@ -39,6 +39,7 @@ class Plan extends Entity
         'description' => true,
         'error_text' => true,
         'category_id' => true,
+        'server_id' => true,
         'category' => true
     ];
 }

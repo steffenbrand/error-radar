@@ -31,6 +31,48 @@ class Initial extends AbstractMigration
             )
             ->create();
 
+        $this->table('servers')
+            ->addColumn('id', 'integer', [
+                'autoIncrement' => true,
+                'default' => null,
+                'limit' => 11,
+                'null' => false,
+                'signed' => false,
+            ])
+            ->addPrimaryKey(['id'])
+            ->addColumn('name', 'string', [
+                'default' => '',
+                'limit' => 255,
+                'null' => false,
+            ])
+            ->addColumn('url', 'string', [
+                'default' => '',
+                'limit' => 255,
+                'null' => false,
+            ])
+            ->addColumn('username', 'string', [
+                'default' => '',
+                'limit' => 255,
+                'null' => false,
+            ])
+            ->addColumn('password', 'string', [
+                'default' => '',
+                'limit' => 255,
+                'null' => false,
+            ])
+            ->addColumn('type', 'string', [
+                'default' => '',
+                'limit' => 255,
+                'null' => false,
+            ])
+            ->addIndex(
+                [
+                    'name',
+                ],
+                ['unique' => true]
+            )
+            ->create();
+
         $this->table('plans')
             ->addColumn('id', 'integer', [
                 'autoIncrement' => true,
@@ -40,11 +82,6 @@ class Initial extends AbstractMigration
                 'signed' => false,
             ])
             ->addPrimaryKey(['id'])
-            ->addColumn('type', 'string', [
-                'default' => '',
-                'limit' => 255,
-                'null' => false,
-            ])
             ->addColumn('key', 'string', [
                 'default' => '',
                 'limit' => 255,
@@ -81,6 +118,12 @@ class Initial extends AbstractMigration
                 'null' => false,
                 'signed' => false,
             ])
+            ->addColumn('server_id', 'integer', [
+                'default' => null,
+                'limit' => 11,
+                'null' => false,
+                'signed' => false,
+            ])
             ->addIndex(
                 [
                     'key',
@@ -90,6 +133,11 @@ class Initial extends AbstractMigration
             ->addIndex(
                 [
                     'category_id',
+                ]
+            )
+            ->addIndex(
+                [
+                    'server_id',
                 ]
             )
             ->create();
@@ -105,6 +153,18 @@ class Initial extends AbstractMigration
                 ]
             )
             ->update();
+
+        $this->table('plans')
+            ->addForeignKey(
+                'server_id',
+                'servers',
+                'id',
+                [
+                    'update' => 'NO_ACTION',
+                    'delete' => 'CASCADE'
+                ]
+            )
+            ->update();
     }
 
     public function down()
@@ -112,9 +172,13 @@ class Initial extends AbstractMigration
         $this->table('plans')
             ->dropForeignKey(
                 'category_id'
+            )
+            ->dropForeignKey(
+                'server_id'
             );
 
         $this->dropTable('categories');
+        $this->dropTable('servers');
         $this->dropTable('plans');
     }
 }

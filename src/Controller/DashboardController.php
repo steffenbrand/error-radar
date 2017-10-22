@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\Entity\Category;
 
 /**
@@ -17,7 +18,7 @@ class DashboardController extends AppController
      */
     public function index()
     {
-        $categories = $this->Categories->getCategoriesContainingPlans();
+        $categories = $this->Categories->findCategoriesContainingPlans();
 
         $columnClass = null;
 
