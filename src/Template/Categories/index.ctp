@@ -50,3 +50,8 @@
     <?php endif; ?>
 </div>
 
+<div class="pmd-floating-action">
+    <button class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="button">
+        <i class="material-icons pmd-sm">add</i>
+    </button>
+</div>
