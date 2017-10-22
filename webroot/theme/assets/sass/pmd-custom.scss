@@ -29,6 +29,10 @@
             background-color: $error-color;
             color: #fff;
         }
+        &.Info {
+            background-color: $info-color;
+            color: #fff;
+        }
         .pmd-card-title {
             padding: 10px;
             margin-bottom: 0;
