@@ -5,8 +5,9 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="10">
+    <?php if ('/' === $this->request->getUri()->getPath()): ?>
+        <meta http-equiv="refresh" content="30">
+    <?php endif; ?>
     <title>Error Radar</title>
     <?= $this->Html->css('/theme/dist/css/main') ?>
 </head>
