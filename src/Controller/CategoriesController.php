@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 /**
- * Class AdminController
+ * Class CategoriesController
  * @package App\Controller
  */
-class AdminController extends AppController
+class CategoriesController extends AppController
 {
     /**
      * Index method
@@ -17,29 +17,7 @@ class AdminController extends AppController
     public function index()
     {
         $categories = $this->Categories->findCategoriesContainingPlans();
-        $plans = $this->Plans->findPlansContainingCategoriesAndServers();
-        $servers = $this->Servers->findServersContainingPlans();
-
         $this->set('categories', $categories);
-        $this->set('plans', $plans);
-        $this->set('servers', $servers);
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Plan id.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $plan = $this->Plans->get($id, [
-            'contain' => ['Categories']
-        ]);
-
-        $this->set('plan', $plan);
-        $this->set('_serialize', ['plan']);
     }
 
     /**
