@@ -20,10 +20,10 @@ return [
             'password'  => 'secret',
             'database'  => 'my_app',
             'port'      => '3306',
+            'driver' => 'Cake\Database\Driver\Mysql',
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'encoding' => 'utf8',
             'timezone' => 'UTC',
