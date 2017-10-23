@@ -3,6 +3,10 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Plan[]|\Cake\Datasource\ResultSetInterface $plans
  */
+
+$this->loadHelper('Form', [
+    'templates' => 'app_form',
+]);
 ?>
 
 <?= $this->element('Admin/head') ?>
