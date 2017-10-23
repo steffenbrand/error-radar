@@ -23,8 +23,8 @@ $this->loadHelper('Form', [
                         <h2><?= __('Create category') ?></h2>
                         <div class="well">
                             <?= $this->Form->create($category) ?>
-                            <?= $this->Form->control('name', ['class' => 'form-control']) ?>
-                            <?= $this->Form->button(__('Add category'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
+                                <?= $this->Form->control('name', ['class' => 'form-control']) ?>
+                                <?= $this->Form->button(__('Add category'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
                             <?= $this->Form->end() ?>
                         </div>
 

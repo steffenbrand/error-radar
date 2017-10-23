@@ -6,7 +6,7 @@ namespace App\Controller;
  * Class ServersController
  * @package App\Controller
  */
-class ServersController extends AppController
+class ServersController extends AdminController
 {
     /**
      * Index method

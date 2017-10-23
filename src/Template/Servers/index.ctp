@@ -24,12 +24,12 @@ $this->loadHelper('Form', [
                         <h2><?= __('Create server') ?></h2>
                         <div class="well">
                             <?= $this->Form->create($server) ?>
-                            <?= $this->Form->control('name', ['class' => 'form-control']) ?>
-                            <?= $this->Form->control('type', ['type' => 'select', 'options' => ['bamboo' => 'Bamboo'], 'label' => __('Type')]) ?>
-                            <?= $this->Form->control('url', ['class' => 'form-control']) ?>
-                            <?= $this->Form->control('username', ['class' => 'form-control']) ?>
-                            <?= $this->Form->control('password', ['type' => 'password', 'class' => 'form-control']) ?>
-                            <?= $this->Form->button(__('Add server'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
+                                <?= $this->Form->control('name', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('type', ['type' => 'select', 'options' => ['bamboo' => 'Bamboo'], 'label' => __('Type')]) ?>
+                                <?= $this->Form->control('url', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('username', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('password', ['type' => 'password', 'class' => 'form-control']) ?>
+                                <?= $this->Form->button(__('Add server'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
                             <?= $this->Form->end() ?>
                         </div>
 

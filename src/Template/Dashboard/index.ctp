@@ -72,7 +72,7 @@
 </div>
 
 <div class="pmd-floating-action">
-    <a href="<?= $this->Html->Url->build(['controller' => 'Categories']) ?>" class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="button">
-        <i class="material-icons pmd-sm">edit</i>
+    <a href="<?= $this->Html->Url->build(['controller' => 'Categories']) ?>" class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="button" data-title="<?= __('Settings') ?>">
+        <i class="material-icons pmd-sm">settings</i>
     </a>
 </div>

@@ -26,11 +26,11 @@ $this->loadHelper('Form', [
                         <h2><?= __('Create plan') ?></h2>
                         <div class="well">
                             <?= $this->Form->create($plan) ?>
-                            <?= $this->Form->control('key', ['class' => 'form-control']) ?>
-                            <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
-                            <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
-                            <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
-                            <?= $this->Form->button(__('Add plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
+                                <?= $this->Form->control('key', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
+                                <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
+                                <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
+                                <?= $this->Form->button(__('Add plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
                             <?= $this->Form->end() ?>
                         </div>
 
@@ -42,17 +42,17 @@ $this->loadHelper('Form', [
                                         <h3 class="pmd-card-title-text">
                                             <?= $plan->key ?>
                                             <span class="badge badge-inverse">
-                                        <i class="material-icons md-light pmd-xxs">
-                                            style
-                                        </i>
+                                                <i class="material-icons md-light pmd-xxs">
+                                                    local_offer
+                                                </i>
                                                 <?= $plan->category->name ?>
-                                    </span>
+                                            </span>
                                             <span class="badge badge-inverse">
-                                        <i class="material-icons md-light pmd-xxs">
-                                            laptop_mac
-                                        </i>
+                                                <i class="material-icons md-light pmd-xxs">
+                                                    laptop_mac
+                                                </i>
                                                 <?= $plan->server->name ?>
-                                    </span>
+                                            </span>
                                             <a class="btn btn-sm pmd-ripple-effect btn-danger"
                                                href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
                                                 <?= __('delete') ?>
