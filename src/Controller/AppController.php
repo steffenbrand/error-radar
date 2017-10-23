@@ -6,9 +6,7 @@ use App\Model\Table\CategoriesTable;
 use App\Model\Table\PlansTable;
 use App\Model\Table\ServersTable;
 use Cake\Controller\Controller;
-use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
-use SteffenBrand\BambooApiClient\Client\BambooClient;
 
 /**
  * Application Controller
@@ -16,7 +14,6 @@ use SteffenBrand\BambooApiClient\Client\BambooClient;
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @property BambooClient $BambooClient
  * @property CategoriesTable $Categories
  * @property PlansTable $Plans
  * @property ServersTable $Servers
@@ -40,13 +37,5 @@ class AppController extends Controller
         $this->Categories = TableRegistry::get('Categories');
         $this->Plans = TableRegistry::get('Plans');
         $this->Servers = TableRegistry::get('Servers');
-
-        $bambooConfig = Configure::read('BambooClient');
-        $this->BambooClient = new BambooClient(
-            $bambooConfig['baseUrl'],
-            $bambooConfig['username'],
-            $bambooConfig['password'],
-            $bambooConfig['timeout']
-        );
     }
 }

@@ -19,7 +19,7 @@ $this->loadHelper('Form', [
 
                 <?= $this->Flash->render() ?>
 
-                <h2><?= __('Create Category') ?></h2>
+                <h2><?= __('Create category') ?></h2>
                 <div class="well">
                     <?= $this->Form->create($category) ?>
                         <?= $this->Form->control('name', ['class' => 'form-control']) ?>
@@ -49,6 +49,7 @@ $this->loadHelper('Form', [
                     </div>
                 <?php endif; ?>
             </div>
+
         </div>
     </div>
 </div>

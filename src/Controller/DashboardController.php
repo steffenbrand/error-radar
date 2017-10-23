@@ -3,6 +3,10 @@
 namespace App\Controller;
 
 use App\Model\Entity\Category;
+use Cake\Core\Configure;
+use Cake\Utility\Security;
+use Psr\Http\Message\StreamInterface;
+use SteffenBrand\BambooApiClient\Client\BambooClient;
 
 /**
  * Class DashboardController
@@ -18,7 +22,7 @@ class DashboardController extends AppController
      */
     public function index()
     {
-        $categories = $this->Categories->findCategoriesContainingPlans();
+        $categories = $this->Categories->findCategoriesContainingPlansAndServers();
 
         $columnClass = null;
 
@@ -33,7 +37,23 @@ class DashboardController extends AppController
                 if (count($category->plans) > 0) {
                     foreach ($category->plans as $plan) {
                         try {
-                            $result = $this->BambooClient->getLatestResultByKey($plan->key);
+
+                            /** @var StreamInterface $stream */
+                            $stream = $plan->server->password;
+                            $password = stream_get_contents($stream);
+                            var_dump(Security::decrypt($password, Configure::read('Security.key')));
+                            die;
+                            /*$bambooClient = new BambooClient(
+                                $plan->server->url,
+                                $plan->server->username,
+                                Security::decrypt($plan->server->password, Configure::read('Security.key')),
+                                10.0
+                            );*/
+
+                            var_dump(Security::decrypt($plan->server->password, Configure::read('Security.key')));
+                            die;
+
+                            $result = $bambooClient->getLatestResultByKey($plan->key);
 
                             $plan->name = $result->getPlan()->getShortName();
                             $plan->state = $result->getState();

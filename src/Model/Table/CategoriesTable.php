@@ -89,4 +89,18 @@ class CategoriesTable extends Table
             ->orderAsc('Categories.id')
             ->all();
     }
+
+    /**
+     * Find all categories containing plans.
+     *
+     * @return \Cake\Datasource\ResultSetInterface
+     * @throws \RuntimeException
+     */
+    public function findCategoriesContainingPlansAndServers()
+    {
+        return $this
+            ->find('all', ['contain' => ['Plans' => 'Servers']])
+            ->orderAsc('Categories.id')
+            ->all();
+    }
 }

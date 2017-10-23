@@ -55,9 +55,8 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
-            ->addColumn('password', 'string', [
+            ->addColumn('password', 'blob', [
                 'default' => '',
-                'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('type', 'string', [

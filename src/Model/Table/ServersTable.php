@@ -61,7 +61,8 @@ class ServersTable extends Table
         $validator
             ->scalar('url')
             ->requirePresence('url', 'create')
-            ->notEmpty('url');
+            ->notEmpty('url')
+            ->url('url');
 
         $validator
             ->scalar('username')
@@ -90,7 +91,6 @@ class ServersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['username']));
         $rules->add($rules->isUnique(['name']));
 
         return $rules;

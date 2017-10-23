@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Model\Entity;
 
+use Cake\Core\Configure;
 use Cake\ORM\Entity;
+use Cake\Utility\Security;
 
 /**
  * Server Entity
@@ -44,4 +47,15 @@ class Server extends Entity
     protected $_hidden = [
         'password'
     ];
+
+    /**
+     * @param $password
+     * @return string
+     */
+    protected function _setPassword($password)
+    {
+        if (strlen($password) > 0) {
+            return Security::encrypt($password, Configure::read('Security.key'));
+        }
+    }
 }

@@ -11,35 +11,25 @@ class ServersController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void
+     * @return \Cake\Http\Response|void|null
      * @throws \RuntimeException
      */
     public function index()
     {
         $servers = $this->Servers->findServersContainingPlans();
-        $this->set('servers', $servers);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $plan = $this->Plans->newEntity();
-        if ($this->request->is('post')) {
-            $plan = $this->Plans->patchEntity($plan, $this->request->getData());
-            if ($this->Plans->save($plan)) {
-                $this->Flash->success(__('The plan has been saved.'));
+        $server = $this->Servers->newEntity();
+        if (true === $this->request->is('post')) {
+            $server = $this->Servers->patchEntity($server, $this->request->getData());
+            if ($this->Servers->save($server)) {
+                $this->Flash->success(__('The server has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The plan could not be saved. Please, try again.'));
+            $this->Flash->error(__('The server could not be saved. Please, try again.'));
         }
-        $categories = $this->Plans->Categories->find('list', ['limit' => 200]);
-        $this->set(compact('plan', 'categories'));
-        $this->set('_serialize', ['plan']);
+
+        $this->set('servers', $servers);
+        $this->set('server', $server);
     }
 
     /**
@@ -51,12 +41,11 @@ class ServersController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $plan = $this->Plans->get($id);
-        if ($this->Plans->delete($plan)) {
-            $this->Flash->success(__('The plan has been deleted.'));
+        $server = $this->Servers->get($id);
+        if ($this->Servers->delete($server)) {
+            $this->Flash->success(__('The server has been deleted.'));
         } else {
-            $this->Flash->error(__('The plan could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The server could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
