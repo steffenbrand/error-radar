@@ -20,7 +20,7 @@ return [
             'password'  => 'secret',
             'database'  => 'my_app',
             'port'      => '3306',
-            'driver' => 'Cake\Database\Driver\Mysql',
+            'driver'    => 'Cake\Database\Driver\Mysql',
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             'className' => 'Cake\Database\Connection',
