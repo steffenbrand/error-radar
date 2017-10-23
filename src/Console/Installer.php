@@ -64,6 +64,7 @@ class Installer
         }
 
         static::setSecuritySalt($rootDir, $io);
+        static::setSecurityKey($rootDir, $io);
 
         if (class_exists('\Cake\Codeception\Console\Installer')) {
             \Cake\Codeception\Console\Installer::customizeCodeceptionBinary($event);
@@ -164,7 +165,7 @@ class Installer
     }
 
     /**
-     * Set the security.salt value in the application's config file.
+     * Set the Security.salt value in the application's config file.
      *
      * @param string $dir The application's root directory.
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
@@ -177,7 +178,7 @@ class Installer
     }
 
     /**
-     * Set the security.salt value in a given file
+     * Set the Security.salt value in a given file
      *
      * @param string $dir The application's root directory.
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
@@ -235,5 +236,49 @@ class Installer
             return;
         }
         $io->write('Unable to update __APP_NAME__ value.');
+    }
+
+    /**
+     * Set the Security.key value in the application's config file.
+     *
+     * @param string $dir The application's root directory.
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @return void
+     */
+    public static function setSecurityKey($dir, $io)
+    {
+        $newKey = hash('sha256', Security::randomBytes(32));
+        static::setSecurityKeyInFile($dir, $io, $newKey, 'app.php');
+    }
+
+    /**
+     * Set the Security.key value in a given file
+     *
+     * @param string $dir The application's root directory.
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param string $newKey key to set in the file
+     * @param string $file A path to a file relative to the application's root
+     * @return void
+     */
+    public static function setSecurityKeyInFile($dir, $io, $newKey, $file)
+    {
+        $config = $dir . '/config/' . $file;
+        $content = file_get_contents($config);
+
+        $content = str_replace('__ENCRYPTION_KEY__', $newKey, $content, $count);
+
+        if ($count == 0) {
+            $io->write('No Security.key placeholder to replace.');
+
+            return;
+        }
+
+        $result = file_put_contents($config, $content);
+        if ($result) {
+            $io->write('Updated Security.key value in config/' . $file);
+
+            return;
+        }
+        $io->write('Unable to update Security.key value.');
     }
 }
