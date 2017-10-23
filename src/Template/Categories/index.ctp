@@ -36,8 +36,7 @@ $this->loadHelper('Form', [
                                         <h3 class="pmd-card-title-text">
                                             <?= $category->name ?>
                                             <span class="badge badge-inverse"><?= count($category->plans) ?></span>
-                                            <a class="btn btn-sm pmd-ripple-effect btn-danger"
-                                               href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'delete', $category->id]) ?>">
+                                            <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'delete', $category->id]) ?>">
                                                 <?= __('delete') ?>
                                             </a>
                                         </h3>
