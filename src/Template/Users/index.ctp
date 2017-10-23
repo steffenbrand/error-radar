@@ -1,9 +1,14 @@
 <?php
+
+use App\Model\Entity\User;
+use App\View\AppView;
+use Cake\Datasource\ResultSetInterface;
+
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface $users
- * @var \App\Model\Entity\User $user
- * @var \App\Model\Entity\User $backendUser
+ * @var AppView $this
+ * @var User[]|ResultSetInterface $users
+ * @var User $user
+ * @var User $backendUser
  * @var bool $isAdmin
  */
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -15,12 +16,11 @@ use Cake\ORM\Entity;
  * @property int $category_id
  * @property int $server_id
  *
- * @property \App\Model\Entity\Category $category
- * @property \App\Model\Entity\Server $server
+ * @property Category $category
+ * @property Server $server
  */
 class Plan extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

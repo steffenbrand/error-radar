@@ -1,8 +1,13 @@
 <?php
+
+use App\Model\Entity\Category;
+use App\View\AppView;
+use Cake\Datasource\ResultSetInterface;
+
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Category[]|\Cake\Datasource\ResultSetInterface $categories
- * @var \App\Model\Entity\Category $category
+ * @var AppView $this
+ * @var Category[]|ResultSetInterface $categories
+ * @var Category $category
  */
 
 $this->loadHelper('Form', [

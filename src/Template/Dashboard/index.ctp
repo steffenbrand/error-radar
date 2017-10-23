@@ -1,9 +1,15 @@
 <?php
+
+use App\Model\Entity\Category;
+use App\Model\Entity\Plan;
+use App\View\AppView;
+use Cake\Datasource\ResultSetInterface;
+
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Category[]|\Cake\Datasource\ResultSetInterface $categories
+ * @var AppView $this
+ * @var Category[]|ResultSetInterface $categories
  * @var string $columnClass
- * @var \App\Model\Entity\Plan[] $errors
+ * @var Plan[] $errors
  */
 ?>
 

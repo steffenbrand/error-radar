@@ -1,8 +1,13 @@
 <?php
+
+use App\Model\Entity\Server;
+use App\View\AppView;
+use Cake\Datasource\ResultSetInterface;
+
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Server[]|\Cake\Datasource\ResultSetInterface $servers
- * @var \App\Model\Entity\Server $server
+ * @var AppView $this
+ * @var Server[]|ResultSetInterface $servers
+ * @var Server $server
  */
 
 $this->loadHelper('Form', [

@@ -1,8 +1,9 @@
 <?php
+
 use Migrations\AbstractSeed;
 
 /**
- * Users seed.
+ * Class UsersSeed
  */
 class UsersSeed extends AbstractSeed
 {

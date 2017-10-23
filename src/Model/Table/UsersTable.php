@@ -3,7 +3,6 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
-use Cake\Auth\DefaultPasswordHasher;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Behavior\TimestampBehavior;
 use Cake\ORM\RulesChecker;

@@ -1,7 +1,9 @@
 <?php
+
+use App\View\AppView;
+
 /**
- * @var \App\View\AppView $this
- * @var bool $isAdmin
+ * @var AppView $this
  */
 
 $path = $this->request->getUri()->getPath();

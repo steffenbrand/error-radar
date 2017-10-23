@@ -65,6 +65,7 @@ return [
      */
     'Security' => [
         'salt' => env('SECURITY_SALT', '__SALT__'),
+        'key' => '__ENCRYPTIONKEY__',
     ],
 
     /**
@@ -246,7 +247,7 @@ return [
              * decreases performance because each query needs to be traversed and
              * manipulated before being executed.
              */
-            'quoteIdentifiers' => false,
+            'quoteIdentifiers' => true,
 
             /**
              * During development, if using MySQL < 5.6, uncommenting the
@@ -342,6 +343,6 @@ return [
      * To use database sessions, load the SQL file located at config/schema/sessions.sql
      */
     'Session' => [
-        'defaults' => 'php',
+        'database' => 'php',
     ],
 ];

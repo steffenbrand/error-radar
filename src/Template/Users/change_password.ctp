@@ -1,7 +1,11 @@
 <?php
+
+use App\Model\Entity\User;
+use App\View\AppView;
+
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
+ * @var AppView $this
+ * @var User $user
  */
 
 $this->loadHelper('Form', [

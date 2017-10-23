@@ -16,11 +16,10 @@ use Cake\Utility\Security;
  * @property string|resource $password
  * @property string $type
  *
- * @property \App\Model\Entity\Plan[] $plans
+ * @property Plan[] $plans
  */
 class Server extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

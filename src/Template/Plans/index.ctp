@@ -1,10 +1,17 @@
 <?php
+
+use App\Model\Entity\Category;
+use App\Model\Entity\Plan;
+use App\Model\Entity\Server;
+use App\View\AppView;
+use Cake\Datasource\ResultSetInterface;
+
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Plan[]|\Cake\Datasource\ResultSetInterface $plans
- * @var \App\Model\Entity\Plan $plan
- * @var \App\Model\Entity\Category[]|\Cake\Datasource\ResultSetInterface $categories
- * @var \App\Model\Entity\Server[]|\Cake\Datasource\ResultSetInterface $servers
+ * @var AppView $this
+ * @var Plan[]|ResultSetInterface $plans
+ * @var Plan $plan
+ * @var Category[]|ResultSetInterface $categories
+ * @var Server[]|ResultSetInterface $servers
  */
 
 $this->loadHelper('Form', [

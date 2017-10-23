@@ -1,9 +1,12 @@
 <?php
+
 use Migrations\AbstractMigration;
 
+/**
+ * Class Initial
+ */
 class Initial extends AbstractMigration
 {
-
     public $autoId = false;
 
     public function up()

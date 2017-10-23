@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Model\Entity\Category;
 use Cake\Core\Configure;
+use Cake\Http\Response;
 use Cake\Utility\Security;
 use SteffenBrand\BambooApiClient\Client\BambooClient;
 
 /**
  * Class DashboardController
+ *
  * @package App\Controller
  */
 class DashboardController extends AppController
@@ -16,7 +18,7 @@ class DashboardController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void
+     * @return Response|void
      * @throws \RuntimeException
      */
     public function index()

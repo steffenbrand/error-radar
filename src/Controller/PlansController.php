@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Controller;
+use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Http\Response;
 
 /**
  * Class PlansController
+ *
  * @package App\Controller
  */
 class PlansController extends AdminController
@@ -11,7 +14,7 @@ class PlansController extends AdminController
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void|null
+     * @return Response|null
      * @throws \RuntimeException
      */
     public function index()
@@ -40,9 +43,9 @@ class PlansController extends AdminController
     /**
      * Delete method
      *
-     * @param string|null $id Plan id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @param string|null $id
+     * @return Response|null
+     * @throws RecordNotFoundException
      */
     public function delete($id = null)
     {

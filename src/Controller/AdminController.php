@@ -47,6 +47,8 @@ class AdminController extends AppController
     }
 
     /**
+     * Checks if currently logged in user has admin role.
+     *
      * @return bool
      */
     public function isAdmin(): bool

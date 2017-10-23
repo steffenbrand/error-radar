@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Table\UsersTable;
+use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Response;
 
 /**
@@ -13,7 +14,7 @@ use Cake\Http\Response;
 class UsersController extends AdminController
 {
     /**
-     * Index method.
+     * Index method
      *
      * @return Response|null
      */
@@ -43,9 +44,9 @@ class UsersController extends AdminController
     /**
      * Delete method
      *
-     * @param string|null $id Plan id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @param string|null $id
+     * @return \Cake\Http\Response|null
+     * @throws RecordNotFoundException
      */
     public function delete($id = null)
     {
@@ -69,9 +70,9 @@ class UsersController extends AdminController
     }
 
     /**
-     * Change password method.
+     * Change password method
      *
-     * @return Response|null Redirects on successful add, renders view otherwise.
+     * @return Response|null
      */
     public function changePassword()
     {
@@ -92,7 +93,7 @@ class UsersController extends AdminController
     }
 
     /**
-     * Login method.
+     * Login method
      *
      * @return Response|null
      */
@@ -114,7 +115,7 @@ class UsersController extends AdminController
     }
 
     /**
-     * Logout method.
+     * Logout method
      *
      * @return Response|null
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -9,11 +10,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  *
- * @property \App\Model\Entity\Plan[] $plans
+ * @property Plan[] $plans
  */
 class Category extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -1,7 +1,11 @@
 <?php
+
+use App\View\AppView;
+use App\Model\Entity\Plan;
+
 /**
- * @var $this Cake\View\View
- * @var \App\Model\Entity\Plan[] $errors
+ * @var AppView $this
+ * @var Plan[] $errors
  */
 ?>
 

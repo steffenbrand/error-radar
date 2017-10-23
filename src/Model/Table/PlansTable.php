@@ -2,6 +2,10 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Plan;
+use Cake\Datasource\EntityInterface;
+use Cake\Datasource\ResultSetInterface;
+use Cake\ORM\Association\BelongsTo;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -9,16 +13,16 @@ use Cake\Validation\Validator;
 /**
  * Plans Model
  *
- * @property \App\Model\Table\CategoriesTable|\Cake\ORM\Association\BelongsTo $Categories
- * @property |\Cake\ORM\Association\BelongsTo $Servers
+ * @property CategoriesTable|BelongsTo $Categories
+ * @property ServersTable|BelongsTo $Servers
  *
- * @method \App\Model\Entity\Plan get($primaryKey, $options = [])
- * @method \App\Model\Entity\Plan newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Plan[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Plan|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Plan patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Plan[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Plan findOrCreate($search, callable $callback = null, $options = [])
+ * @method Plan get($primaryKey, $options = [])
+ * @method Plan newEntity($data = null, array $options = [])
+ * @method Plan[] newEntities(array $data, array $options = [])
+ * @method Plan|bool save(EntityInterface $entity, $options = [])
+ * @method Plan patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Plan[] patchEntities($entities, array $data, array $options = [])
+ * @method Plan findOrCreate($search, callable $callback = null, $options = [])
  */
 class PlansTable extends Table
 {
@@ -49,8 +53,8 @@ class PlansTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
@@ -87,8 +91,8 @@ class PlansTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {
@@ -102,7 +106,7 @@ class PlansTable extends Table
     /**
      * Find all plans containing categories and servers.
      *
-     * @return \Cake\Datasource\ResultSetInterface
+     * @return ResultSetInterface
      * @throws \RuntimeException
      */
     public function findPlansContainingCategoriesAndServers()
