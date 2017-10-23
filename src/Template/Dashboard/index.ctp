@@ -19,7 +19,7 @@
                         $errorsClass = 'alert-warning';
                     }
                 ?>
-                <div role="alert" class="alert alert-danger alert-dismissible">
+                <div role="alert" class="alert <?= $errorsClass ?>">
                     <strong><?= $plan->key ?></strong>
                     <?= $plan->error_text ?>
                 </div>

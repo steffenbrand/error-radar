@@ -1,4 +1,9 @@
-<?php /** @var $this Cake\View\View */ ?>
+<?php
+/**
+ * @var $this Cake\View\View
+ * @var \App\Model\Entity\Plan[] $errors
+ */
+?>
 
 <?= $this->Html->docType() ?>
 <html lang="en">
@@ -11,7 +16,7 @@
     <title>Error Radar</title>
     <?= $this->Html->css('/theme/dist/css/main') ?>
 </head>
-<body>
+<body <?php if (true === isset($errors) && count($errors) > 0): ?>class="errors"<?php endif; ?>>
     <section id="pmd-main">
         <div class="pmd-content" id="content">
             <?= $this->fetch('content') ?>

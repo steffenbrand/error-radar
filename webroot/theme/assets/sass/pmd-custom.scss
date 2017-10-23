@@ -49,4 +49,21 @@
 .material-icons.pmd-xxs {
     font-size: 11px;
 }
-
+body {
+    &.errors {
+        -webkit-animation: background 5s cubic-bezier(1,0,0,1) infinite;
+        animation: background 5s cubic-bezier(1,0,0,1) infinite;
+    }
+}
+@-webkit-keyframes background {
+    0% { background-color: #ff00a6; }
+    33% { background-color: #fff02a; }
+    67% { background-color: #8078ff; }
+    100% { background-color: #ff00a6; }
+}
+@keyframes background {
+    0% { background-color: #ff00a6; }
+    33% { background-color: #fff02a; }
+    67% { background-color: #8078ff; }
+    100% { background-color: #ff00a6; }
+}
