@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Model\Entity\Category;
 use Cake\Core\Configure;
 use Cake\Utility\Security;
-use Psr\Http\Message\StreamInterface;
 use SteffenBrand\BambooApiClient\Client\BambooClient;
 
 /**
@@ -37,21 +36,16 @@ class DashboardController extends AppController
                 if (count($category->plans) > 0) {
                     foreach ($category->plans as $plan) {
                         try {
+                            $resource = $plan->server->password;
+                            $encPassword = stream_get_contents($resource);
+                            $password = Security::decrypt($encPassword, Configure::read('Security.key'));
 
-                            /** @var StreamInterface $stream */
-                            $stream = $plan->server->password;
-                            $password = stream_get_contents($stream);
-                            var_dump(Security::decrypt($password, Configure::read('Security.key')));
-                            die;
-                            /*$bambooClient = new BambooClient(
+                            $bambooClient = new BambooClient(
                                 $plan->server->url,
                                 $plan->server->username,
-                                Security::decrypt($plan->server->password, Configure::read('Security.key')),
+                                $password,
                                 10.0
-                            );*/
-
-                            var_dump(Security::decrypt($plan->server->password, Configure::read('Security.key')));
-                            die;
+                            );
 
                             $result = $bambooClient->getLatestResultByKey($plan->key);
 
@@ -60,6 +54,7 @@ class DashboardController extends AppController
                             $plan->number = $result->getNumber();
                         } catch (\Exception $e) {
                             $plan->state = 'Error';
+                            $this->log($e->getMessage());
                         }
                     }
                 }

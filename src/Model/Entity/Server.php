@@ -13,7 +13,7 @@ use Cake\Utility\Security;
  * @property string $name
  * @property string $url
  * @property string $username
- * @property string $password
+ * @property string|resource $password
  * @property string $type
  *
  * @property \App\Model\Entity\Plan[] $plans

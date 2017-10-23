@@ -21,6 +21,7 @@ use Cake\Validation\Validator;
  */
 class ServersTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -70,7 +71,6 @@ class ServersTable extends Table
             ->notEmpty('username');
 
         $validator
-            ->scalar('password')
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
