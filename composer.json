@@ -1,7 +1,7 @@
 {
     "name": "steffenbrand/error-radar",
     "description": "Monitoring Dashboard for Bamboo Builds",
-    "homepage": "https://cakephp.org",
+    "homepage": "https://github.com/steffenbrand/error-radar",
     "type": "project",
     "license": "MIT",
     "require": {
@@ -11,7 +11,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*",
-        "steffenbrand/bamboo-api-client": "^1.0"
+        "steffenbrand/bamboo-api-client": "^1.0.3"
     },
     "require-dev": {
         "psy/psysh": "@stable",
