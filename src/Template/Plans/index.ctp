@@ -59,8 +59,7 @@ $this->loadHelper('Form', [
                                                 </i>
                                                 <?= $plan->server->name ?>
                                             </span>
-                                            <a class="btn btn-sm pmd-ripple-effect btn-danger"
-                                               href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
+                                            <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
                                                 <?= __('delete') ?>
                                             </a>
                                         </h3>

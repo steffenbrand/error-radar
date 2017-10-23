@@ -23,24 +23,9 @@ class UsersController extends AdminController
             return $this->redirect($this->Auth->redirectUrl());
         }
 
-        $users = $this->paginate($this->Users, ['limit' => 15]);
-
-        $this->set('users', $users);
-    }
-
-    /**
-     * Add method.
-     *
-     * @return Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        if ($this->isAdmin() === false) {
-            return $this->redirect($this->Auth->redirectUrl());
-        }
+        $users = $this->Users->find()->all();
 
         $user = $this->Users->newEntity();
-
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
@@ -51,7 +36,36 @@ class UsersController extends AdminController
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
 
+        $this->set('users', $users);
         $this->set('user', $user);
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Plan id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        if ($this->isAdmin() === false) {
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+
+        if ($this->Auth->user()['id'] === (int) $id) {
+            $this->Flash->error(__('You cannot delete your own user.'));
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $user = $this->Users->get($id);
+        if ($this->Users->delete($user)) {
+            $this->Flash->success(__('The user has been deleted.'));
+        } else {
+            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
     }
 
     /**

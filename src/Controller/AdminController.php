@@ -2,8 +2,18 @@
 
 namespace App\Controller;
 
+use App\Model\Table\PlansTable;
+use App\Model\Table\ServersTable;
+use App\Model\Table\UsersTable;
+use Cake\ORM\TableRegistry;
+
 /**
  * Class AdminController
+ *
+ * @property PlansTable $Plans
+ * @property ServersTable $Servers
+ * @property UsersTable $Users
+ *
  * @package App\Controller
  */
 class AdminController extends AppController
@@ -17,6 +27,10 @@ class AdminController extends AppController
     {
         parent::initialize();
 
+        $this->Plans = TableRegistry::get('Plans');
+        $this->Servers = TableRegistry::get('Servers');
+        $this->Users = TableRegistry::get('Users');
+
         $this->loadComponent('Auth', [
             'loginRedirect' => [
                 'controller' => 'Category',
@@ -28,7 +42,8 @@ class AdminController extends AppController
             ]
         ]);
 
-        $this->set('user', $this->Auth->user());
+        $this->set('backendUser', $this->Auth->user());
+        $this->set('isAdmin', $this->isAdmin());
     }
 
     /**

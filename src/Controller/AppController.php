@@ -15,8 +15,6 @@ use Cake\ORM\TableRegistry;
  * will inherit them.
  *
  * @property CategoriesTable $Categories
- * @property PlansTable $Plans
- * @property ServersTable $Servers
  *
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
@@ -35,7 +33,5 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
         $this->Categories = TableRegistry::get('Categories');
-        $this->Plans = TableRegistry::get('Plans');
-        $this->Servers = TableRegistry::get('Servers');
     }
 }

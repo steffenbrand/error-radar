@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
+ * @var bool $isAdmin
  */
 
 $path = $this->request->getUri()->getPath();
@@ -24,5 +25,12 @@ $path = $this->request->getUri()->getPath();
                 <?= _('Servers') ?>
             </a>
         </li>
+        <?php if (true === $isAdmin): ?>
+            <li <?php if ('/users' === $path): ?>class="active"<?php endif; ?> role="presentation">
+                <a href="<?= $this->Html->Url->build(['controller' => 'Users']) ?>">
+                    <?= _('Users') ?>
+                </a>
+            </li>
+        <?php endif; ?>
     </ul>
 </div>
