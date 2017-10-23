@@ -11,7 +11,6 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $state
  * @property int $number
- * @property string $description
  * @property string $error_text
  * @property int $category_id
  * @property int $server_id
@@ -36,7 +35,6 @@ class Plan extends Entity
         'name' => true,
         'state' => true,
         'number' => true,
-        'description' => true,
         'error_text' => true,
         'category_id' => true,
         'server_id' => true,

@@ -101,11 +101,6 @@ class Initial extends AbstractMigration
                 'limit' => 11,
                 'null' => true,
             ])
-            ->addColumn('description', 'text', [
-                'default' => null,
-                'limit' => null,
-                'null' => true,
-            ])
             ->addColumn('error_text', 'text', [
                 'default' => null,
                 'limit' => null,

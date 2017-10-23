@@ -36,8 +36,7 @@ class DashboardController extends AppController
                 if (count($category->plans) > 0) {
                     foreach ($category->plans as $plan) {
                         try {
-                            $resource = $plan->server->password;
-                            $encPassword = stream_get_contents($resource);
+                            $encPassword = stream_get_contents($plan->server->password);
                             $password = Security::decrypt($encPassword, Configure::read('Security.key'));
 
                             $bambooClient = new BambooClient(

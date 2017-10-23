@@ -77,10 +77,6 @@ class PlansTable extends Table
             ->allowEmpty('number');
 
         $validator
-            ->scalar('description')
-            ->allowEmpty('description');
-
-        $validator
             ->scalar('error_text')
             ->allowEmpty('error_text');
 

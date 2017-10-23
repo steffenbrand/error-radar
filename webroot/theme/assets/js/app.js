@@ -6,4 +6,9 @@ $(window).on('load', function() {
 
     $('.pmd-tabs').pmdTab();
 
+    $('.select-simple').select2({
+        theme: 'bootstrap',
+        minimumResultsForSearch: Infinity
+    });
+
 });

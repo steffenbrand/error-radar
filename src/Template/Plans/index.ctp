@@ -2,6 +2,9 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Plan[]|\Cake\Datasource\ResultSetInterface $plans
+ * @var \App\Model\Entity\Plan $plan
+ * @var \App\Model\Entity\Category[]|\Cake\Datasource\ResultSetInterface $categories
+ * @var \App\Model\Entity\Server[]|\Cake\Datasource\ResultSetInterface $servers
  */
 
 $this->loadHelper('Form', [
@@ -9,42 +12,65 @@ $this->loadHelper('Form', [
 ]);
 ?>
 
-<?= $this->element('Admin/head') ?>
-<div class="pmd-card pmd-z-depth">
-    <?= $this->element('Admin/tabs') ?>
-    <div class="pmd-card-body">
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="plans-fixed">
-                <h2><?= __('Plans') ?></h2>
-                <?php if ($plans->count() > 0): ?>
-                    <?php foreach ($plans as $plan): ?>
-                        <div class="pmd-card pmd-z-depth Info">
-                            <div class="pmd-card-title">
-                                <h3 class="pmd-card-title-text">
-                                    <?= $plan->key ?>
-                                    <span class="badge badge-inverse">
+<div class="row">
+    <div class="col-md-12">
+        <?= $this->element('Admin/head') ?>
+        <div class="pmd-card pmd-z-depth">
+            <?= $this->element('Admin/tabs') ?>
+            <div class="pmd-card-body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="plans-fixed">
+
+                        <?= $this->Flash->render() ?>
+
+                        <h2><?= __('Create plan') ?></h2>
+                        <div class="well">
+                            <?= $this->Form->create($plan) ?>
+                            <?= $this->Form->control('key', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
+                            <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
+                            <?= $this->Form->button(__('Add plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
+                            <?= $this->Form->end() ?>
+                        </div>
+
+                        <h2><?= __('Plans') ?></h2>
+                        <?php if ($plans->count() > 0): ?>
+                            <?php foreach ($plans as $plan): ?>
+                                <div class="pmd-card pmd-z-depth Info">
+                                    <div class="pmd-card-title">
+                                        <h3 class="pmd-card-title-text">
+                                            <?= $plan->key ?>
+                                            <span class="badge badge-inverse">
                                         <i class="material-icons md-light pmd-xxs">
                                             style
                                         </i>
-                                        <?= $plan->category->name ?>
+                                                <?= $plan->category->name ?>
                                     </span>
-                                    <span class="badge badge-inverse">
+                                            <span class="badge badge-inverse">
                                         <i class="material-icons md-light pmd-xxs">
                                             laptop_mac
                                         </i>
-                                        <?= $plan->server->name ?>
+                                                <?= $plan->server->name ?>
                                     </span>
-                                </h3>
+                                            <a class="btn btn-sm pmd-ripple-effect btn-danger"
+                                               href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
+                                                <?= __('delete') ?>
+                                            </a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="alert alert-warning" role="alert">
+                                <?= __('No plans.') ?>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="alert alert-warning" role="alert">
-                        <?= __('No plans.') ?>
+                        <?php endif; ?>
+
                     </div>
-                <?php endif; ?>
+                </div>
             </div>
         </div>
+        <?= $this->element('Admin/fab') ?>
     </div>
 </div>
-<?= $this->element('Admin/fab') ?>

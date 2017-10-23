@@ -11,24 +11,17 @@ class PlansController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Http\Response|void
+     * @return \Cake\Http\Response|void|null
      * @throws \RuntimeException
      */
     public function index()
     {
         $plans = $this->Plans->findPlansContainingCategoriesAndServers();
-        $this->set('plans', $plans);
-    }
+        $servers = $this->Servers->find('list')->all();
+        $categories = $this->Categories->find('list')->all();
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
         $plan = $this->Plans->newEntity();
-        if ($this->request->is('post')) {
+        if (true === $this->request->is('post')) {
             $plan = $this->Plans->patchEntity($plan, $this->request->getData());
             if ($this->Plans->save($plan)) {
                 $this->Flash->success(__('The plan has been saved.'));
@@ -37,9 +30,11 @@ class PlansController extends AppController
             }
             $this->Flash->error(__('The plan could not be saved. Please, try again.'));
         }
-        $categories = $this->Plans->Categories->find('list', ['limit' => 200]);
-        $this->set(compact('plan', 'categories'));
-        $this->set('_serialize', ['plan']);
+
+        $this->set('plans', $plans);
+        $this->set('servers', $servers);
+        $this->set('categories', $categories);
+        $this->set('plan', $plan);
     }
 
     /**
@@ -51,9 +46,8 @@ class PlansController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $plan = $this->Plans->get($id);
-        if ($this->Plans->delete($plan)) {
+        $category = $this->Plans->get($id);
+        if ($this->Plans->delete($category)) {
             $this->Flash->success(__('The plan has been deleted.'));
         } else {
             $this->Flash->error(__('The plan could not be deleted. Please, try again.'));
