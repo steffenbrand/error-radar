@@ -17,9 +17,10 @@ $this->loadHelper('Form', [
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="categories-fixed">
 
+                <?= $this->Flash->render() ?>
+
                 <h2><?= __('Create Category') ?></h2>
                 <div class="well">
-                    <?= $this->Flash->render() ?>
                     <?= $this->Form->create($category) ?>
                         <?= $this->Form->control('name', ['class' => 'form-control']) ?>
                         <?= $this->Form->button(__('Add category'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
@@ -34,6 +35,10 @@ $this->loadHelper('Form', [
                                 <h3 class="pmd-card-title-text">
                                     <?= $category->name ?>
                                     <span class="badge badge-inverse"><?= count($category->plans) ?></span>
+                                    <a class="btn btn-sm pmd-ripple-effect btn-danger"
+                                       href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'delete', $category->id]) ?>">
+                                        <?= __('delete') ?>
+                                    </a>
                                 </h3>
                             </div>
                         </div>
