@@ -23,16 +23,22 @@ $this->loadHelper('Form', [
 
                         <?= $this->Flash->render() ?>
 
-                        <h2><?= __('Create plan') ?></h2>
-                        <div class="well">
-                            <?= $this->Form->create($plan) ?>
-                                <?= $this->Form->control('key', ['class' => 'form-control']) ?>
-                                <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
-                                <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
-                                <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
-                                <?= $this->Form->button(__('Add plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
-                            <?= $this->Form->end() ?>
-                        </div>
+                        <?php if ($categories->count() > 0 && $servers->count() > 0): ?>
+                            <h2><?= __('Create plan') ?></h2>
+                            <div class="well">
+                                <?= $this->Form->create($plan) ?>
+                                    <?= $this->Form->control('key', ['class' => 'form-control']) ?>
+                                    <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
+                                    <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
+                                    <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
+                                    <?= $this->Form->button(__('Add plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
+                                <?= $this->Form->end() ?>
+                            </div>
+                        <?php else: ?>
+                            <div role="alert" class="alert alert-danger">
+                                <?= __('Create at least one category and server before you can create plans.') ?>
+                            </div>
+                        <?php endif; ?>
 
                         <h2><?= __('Plans') ?></h2>
                         <?php if ($plans->count() > 0): ?>
