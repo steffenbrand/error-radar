@@ -71,7 +71,10 @@ use Cake\Datasource\ResultSetInterface;
         <div class="col-md-12">
             <h2><?= __('Silence') ?></h2>
             <div class="alert alert-warning" role="alert">
-                <?= __('No plans configured') ?>
+                <?= __('Not configured yet.') ?>
+                <a href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'index']) ?>">
+                    <?= __('Configure now!') ?>
+                </a>
             </div>
         </div>
     <?php endif; ?>

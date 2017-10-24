@@ -51,9 +51,21 @@ $this->loadHelper('Form', [
                                                         <?= __('edit') ?>
                                                     </a>
                                                     <?php if ($user->id !== $backendUser['id']): ?>
-                                                        <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Users', 'action' => 'delete', $user->id]) ?>">
-                                                            <?= __('delete') ?>
-                                                        </a>
+                                                        <button data-target="#alert-dialog-<?= $user->id ?>" data-toggle="modal" class="btn btn-sm pmd-ripple-effect btn-danger" type="button"><?= __('delete') ?></button>
+                                                        <div tabindex="-1" class="modal fade" id="alert-dialog-<?= $user->id ?>" style="display: none;" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h2 class="pmd-card-title-text"><?= __('Confirm deletion') ?></h2>
+                                                                    </div>
+                                                                    <div class="modal-body"><?= __('The following user will be deleted: ') . $user->username ?></div>
+                                                                    <div class="pmd-modal-action pmd-modal-bordered text-right">
+                                                                        <a href="<?= $this->Html->Url->build(['controller' => 'Users', 'action' => 'delete', $user->id]) ?>" class="btn pmd-ripple-effect btn-primary pmd-btn-flat" type="button"><?= __('confirm') ?></a>
+                                                                        <button data-dismiss="modal"  class="btn pmd-ripple-effect btn-default pmd-btn-flat" type="button"><?= __('discard') ?></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     <?php endif; ?>
                                                 </div>
                                             <?php endif; ?>

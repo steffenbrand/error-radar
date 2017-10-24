@@ -67,6 +67,14 @@
 .select2-selection__rendered {
     font-size: 16px;
 }
+.modal-header {
+    h2 {
+        &.pmd-card-title-text {
+            color: #333;
+            font-weight: 400;
+        }
+    }
+}
 body {
     &.errors {
         -webkit-animation: background 5s cubic-bezier(1,0,0,1) infinite;
