@@ -1,10 +1,10 @@
 <?php
 
-use App\View\AppView;
+use Cake\View\View;
 use App\Model\Entity\Plan;
 
 /**
- * @var AppView $this
+ * @var View $this
  * @var Plan[] $errors
  */
 ?>

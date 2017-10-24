@@ -1,9 +1,9 @@
 <?php
 
-use App\View\AppView;
+use Cake\View\View;
 
 /**
- * @var AppView $this
+ * @var View $this
  */
 
 $path = $this->request->getUri()->getPath();

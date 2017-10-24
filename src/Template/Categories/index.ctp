@@ -1,11 +1,11 @@
 <?php
 
 use App\Model\Entity\Category;
-use App\View\AppView;
+use Cake\View\View;
 use Cake\Datasource\ResultSetInterface;
 
 /**
- * @var AppView $this
+ * @var View $this
  * @var Category[]|ResultSetInterface $categories
  * @var Category $category
  */

@@ -2,11 +2,11 @@
 
 use App\Model\Entity\Category;
 use App\Model\Entity\Plan;
-use App\View\AppView;
+use Cake\View\View;
 use Cake\Datasource\ResultSetInterface;
 
 /**
- * @var AppView $this
+ * @var View $this
  * @var Category[]|ResultSetInterface $categories
  * @var string $columnClass
  * @var Plan[] $errors

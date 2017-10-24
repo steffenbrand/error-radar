@@ -1,11 +1,11 @@
 <?php
 
 use App\Model\Entity\User;
-use App\View\AppView;
+use Cake\View\View;
 use Cake\Datasource\ResultSetInterface;
 
 /**
- * @var AppView $this
+ * @var View $this
  * @var User[]|ResultSetInterface $users
  * @var User $user
  * @var User $backendUser

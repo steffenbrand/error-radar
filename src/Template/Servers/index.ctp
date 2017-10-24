@@ -1,11 +1,11 @@
 <?php
 
 use App\Model\Entity\Server;
-use App\View\AppView;
+use Cake\View\View;
 use Cake\Datasource\ResultSetInterface;
 
 /**
- * @var AppView $this
+ * @var View $this
  * @var Server[]|ResultSetInterface $servers
  * @var Server $server
  */

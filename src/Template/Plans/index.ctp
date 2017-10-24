@@ -3,11 +3,11 @@
 use App\Model\Entity\Category;
 use App\Model\Entity\Plan;
 use App\Model\Entity\Server;
-use App\View\AppView;
+use Cake\View\View;
 use Cake\Datasource\ResultSetInterface;
 
 /**
- * @var AppView $this
+ * @var View $this
  * @var Plan[]|ResultSetInterface $plans
  * @var Plan $plan
  * @var Category[]|ResultSetInterface $categories

@@ -1,6 +1,6 @@
 <?php
 
-use App\View\AppView;
+use Cake\View\View;
 
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
@@ -15,7 +15,7 @@ use App\View\AppView;
  * @since         0.10.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  *
- * @var AppView $this
+ * @var View $this
  */
 ?>
 
