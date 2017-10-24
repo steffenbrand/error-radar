@@ -1,8 +1,11 @@
 $(window).on('load', function() {
 
-    setTimeout(function() {
-        $('#content').css('opacity', '1');
-    }, 200);
+    $('#content').css('opacity', '1');
+
+    $(window).bind('beforeunload', function() {
+        $('#content').css('opacity', '0');
+        setTimeout(function() {}, 200);
+    });
 
     $('.pmd-tabs').pmdTab();
 

@@ -21,6 +21,7 @@ class ServersController extends AdminController
     {
         $servers = $this->Servers->findServersContainingPlans();
         $server = $this->Servers->newEntity();
+
         if (true === $this->request->is('post')) {
             $server = $this->Servers->patchEntity($server, $this->request->getData());
             if ($this->Servers->save($server)) {
@@ -45,6 +46,7 @@ class ServersController extends AdminController
     public function delete($id = null)
     {
         $server = $this->Servers->get($id);
+
         if ($this->Servers->delete($server)) {
             $this->Flash->success(__('The server has been deleted.'));
         } else {

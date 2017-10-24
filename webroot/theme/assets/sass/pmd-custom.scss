@@ -1,6 +1,6 @@
 #content {
     opacity: 0;
-    @include transition(.5s);
+    @include transition(.2s);
 }
 .pmd-content {
     padding-top: 0;
@@ -42,6 +42,13 @@
             h4 {
                 margin-bottom: 0;
                 margin-top: 5px;
+            }
+            .cta-actions {
+                .btn-sm {
+                    min-width: 80px;
+                    padding: 2px 12px 4px 12px;
+                    margin-top: -3px;
+                }
             }
         }
     }

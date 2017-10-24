@@ -12,6 +12,7 @@ gulp.task('sass', function () {
         './node_modules/propellerkit/dist/css/bootstrap.min.css',
         './node_modules/propellerkit/dist/css/propeller.min.css',
         './node_modules/select2/dist/css/select2.min.css',
+        './node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
         './node_modules/propellerkit/components/select2/css/pmd-select2.css',
         './assets/sass/main.scss'
     ])
@@ -26,7 +27,7 @@ gulp.task('js', function () {
         './node_modules/jquery/dist/jquery.min.js',
         './node_modules/propellerkit/dist/js/bootstrap.min.js',
         './node_modules/propellerkit/dist/js/propeller.min.js',
-        './node_modules/select2/dist/js/select2.min.js',
+        './node_modules/select2/dist/js/select2.full.js',
         './node_modules/propellerkit/components/select2/js/pmd-select2.js',
         './assets/js/app.js'
     ])

@@ -25,8 +25,8 @@ class UsersController extends AdminController
         }
 
         $users = $this->Users->find()->all();
-
         $user = $this->Users->newEntity();
+
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
@@ -38,6 +38,35 @@ class UsersController extends AdminController
         }
 
         $this->set('users', $users);
+        $this->set('user', $user);
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id
+     * @return \Cake\Http\Response|null
+     * @throws RecordNotFoundException
+     */
+    public function edit($id = null)
+    {
+        if ($this->isAdmin() === false) {
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+
+        $user = $this->Users->get($id);
+
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            var_dump($user);
+            die;
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been edited.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The user could not be edited. Please, try again.'));
+        }
+
         $this->set('user', $user);
     }
 
@@ -60,6 +89,7 @@ class UsersController extends AdminController
         }
 
         $user = $this->Users->get($id);
+
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {

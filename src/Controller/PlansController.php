@@ -22,8 +22,8 @@ class PlansController extends AdminController
         $plans = $this->Plans->findPlansContainingCategoriesAndServers();
         $servers = $this->Servers->find('list')->all();
         $categories = $this->Categories->find('list')->all();
-
         $plan = $this->Plans->newEntity();
+
         if (true === $this->request->is('post')) {
             $plan = $this->Plans->patchEntity($plan, $this->request->getData());
             if ($this->Plans->save($plan)) {
@@ -50,6 +50,7 @@ class PlansController extends AdminController
     public function delete($id = null)
     {
         $category = $this->Plans->get($id);
+
         if ($this->Plans->delete($category)) {
             $this->Flash->success(__('The plan has been deleted.'));
         } else {

@@ -24,7 +24,7 @@ $this->loadHelper('Form', [
             <?= $this->element('Admin/tabs') ?>
             <div class="pmd-card-body">
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="servers-fixed">
+                    <div role="tabpanel" class="tab-pane active" id="users-fixed">
 
                         <?= $this->Flash->render() ?>
 
@@ -45,10 +45,17 @@ $this->loadHelper('Form', [
                                     <div class="pmd-card-title">
                                         <h3 class="pmd-card-title-text">
                                             <?= $user->username ?>
-                                            <?php if (true === $isAdmin && $user->id !== $backendUser['id']): ?>
-                                                <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Users', 'action' => 'delete', $user->id]) ?>">
-                                                    <?= __('delete') ?>
-                                                </a>
+                                            <?php if (true === $isAdmin): ?>
+                                                <div class="cta-actions pull-right">
+                                                    <a class="btn btn-sm pmd-ripple-effect btn-warning" href="<?= $this->Html->Url->build(['controller' => 'Users', 'action' => 'edit', $user->id]) ?>">
+                                                        <?= __('edit') ?>
+                                                    </a>
+                                                    <?php if ($user->id !== $backendUser['id']): ?>
+                                                        <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Users', 'action' => 'delete', $user->id]) ?>">
+                                                            <?= __('delete') ?>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </div>
                                             <?php endif; ?>
                                         </h3>
                                     </div>

@@ -8,6 +8,7 @@ use Cake\Datasource\ResultSetInterface;
  * @var View $this
  * @var Category[]|ResultSetInterface $categories
  * @var Category $category
+ * @var bool $isAdmin
  */
 
 $this->loadHelper('Form', [
@@ -41,9 +42,13 @@ $this->loadHelper('Form', [
                                         <h3 class="pmd-card-title-text">
                                             <?= $category->name ?>
                                             <span class="badge badge-inverse"><?= count($category->plans) ?></span>
-                                            <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'delete', $category->id]) ?>">
-                                                <?= __('delete') ?>
-                                            </a>
+                                            <?php if (true === $isAdmin): ?>
+                                                <div class="cta-actions pull-right">
+                                                    <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'delete', $category->id]) ?>">
+                                                        <?= __('delete') ?>
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
                                         </h3>
                                     </div>
                                 </div>

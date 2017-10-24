@@ -12,6 +12,7 @@ use Cake\Datasource\ResultSetInterface;
  * @var Plan $plan
  * @var Category[]|ResultSetInterface $categories
  * @var Server[]|ResultSetInterface $servers
+ * @var bool $isAdmin
  */
 
 $this->loadHelper('Form', [
@@ -66,9 +67,13 @@ $this->loadHelper('Form', [
                                                 </i>
                                                 <?= $plan->server->name ?>
                                             </span>
-                                            <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
-                                                <?= __('delete') ?>
-                                            </a>
+                                            <?php if (true === $isAdmin): ?>
+                                                <div class="cta-actions pull-right">
+                                                    <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
+                                                        <?= __('delete') ?>
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
                                         </h3>
                                     </div>
                                 </div>

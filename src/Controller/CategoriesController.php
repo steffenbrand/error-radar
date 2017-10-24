@@ -21,8 +21,8 @@ class CategoriesController extends AdminController
     public function index()
     {
         $categories = $this->Categories->findCategoriesContainingPlans();
-
         $category = $this->Categories->newEntity();
+
         if (true === $this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
@@ -47,6 +47,7 @@ class CategoriesController extends AdminController
     public function delete($id = null)
     {
         $category = $this->Categories->get($id);
+
         if ($this->Categories->delete($category)) {
             $this->Flash->success(__('The category has been deleted.'));
         } else {
