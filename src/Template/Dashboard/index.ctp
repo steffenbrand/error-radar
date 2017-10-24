@@ -46,14 +46,14 @@ use Cake\Datasource\ResultSetInterface;
                                 <?php if (null !== $plan->name): ?>
                                     <h3 class="pmd-card-title-text">
                                         <?= $plan->name ?>
-                                        <?php if (null !== $plan->number && count($category->plans) > 8): ?>
+                                        <?php if (null !== $plan->number && count($category->plans) > 12): ?>
                                             <span class="badge badge-inverse"><?= $plan->number ?></span>
                                         <?php endif; ?>
                                     </h3>
                                 <?php else: ?>
                                     <h3 class="pmd-card-title-text"><?= $plan->key ?></h3>
                                 <?php endif; ?>
-                                <?php if (count($category->plans) <= 8): ?>
+                                <?php if (count($category->plans) <= 12): ?>
                                     <h4>
                                         <?= $plan->key ?>
                                         <?php if (null !== $plan->number): ?>
