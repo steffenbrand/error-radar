@@ -27,7 +27,7 @@ class UsersController extends AdminController
         $users = $this->Users->find()->all();
         $user = $this->Users->newEntity();
 
-        if ($this->request->is('post')) {
+        if (true === $this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -56,10 +56,8 @@ class UsersController extends AdminController
 
         $user = $this->Users->get($id);
 
-        if ($this->request->is('post')) {
+        if (true === $this->request->is('put') || true === $this->request->is('put')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            var_dump($user);
-            die;
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been edited.'));
                 return $this->redirect(['action' => 'index']);
@@ -109,7 +107,7 @@ class UsersController extends AdminController
         $backendUser = $this->Auth->user();
         $user = $this->Users->get($backendUser['id']);
 
-        if ($this->request->is('post')) {
+        if (true === $this->request->is('post')) {
             $user = $this->Users->patchEntity($user, ['password' => $this->request->getData('password')], ['validate' => 'password']);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('New password has been saved.'));
@@ -134,7 +132,7 @@ class UsersController extends AdminController
             return $this->redirect($this->Auth->redirectUrl());
         }
 
-        if ($this->request->is('post')) {
+        if (true === $this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);

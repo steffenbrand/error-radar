@@ -6,10 +6,7 @@ use Cake\Datasource\ResultSetInterface;
 
 /**
  * @var View $this
- * @var User[]|ResultSetInterface $users
  * @var User $user
- * @var User $backendUser
- * @var bool $isAdmin
  */
 
 $this->loadHelper('Form', [

@@ -3,11 +3,13 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\Server;
+use Cake\Core\Configure;
 use Cake\Datasource\EntityInterface;
 use Cake\Datasource\ResultSetInterface;
 use Cake\ORM\Association\HasMany;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\Utility\Security;
 use Cake\Validation\Validator;
 
 /**
@@ -111,5 +113,17 @@ class ServersTable extends Table
             ->find('all', ['contain' => ['Plans']])
             ->orderAsc('Servers.id')
             ->all();
+    }
+
+    /**
+     * @param $event
+     * @param Server $entity
+     * @param $options
+     * @return mixed
+     */
+    public function beforeSave($event, $entity, $options) {
+        if (strlen($entity->password) > 0) {
+            $entity->password =  Security::encrypt($entity->password, Configure::read('Security.key'));
+        }
     }
 }

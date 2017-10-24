@@ -46,6 +46,10 @@ class CategoriesController extends AdminController
      */
     public function delete($id = null)
     {
+        if ($this->isAdmin() === false) {
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+
         $category = $this->Categories->get($id);
 
         if ($this->Categories->delete($category)) {

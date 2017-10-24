@@ -49,6 +49,10 @@ class PlansController extends AdminController
      */
     public function delete($id = null)
     {
+        if ($this->isAdmin() === false) {
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+
         $category = $this->Plans->get($id);
 
         if ($this->Plans->delete($category)) {

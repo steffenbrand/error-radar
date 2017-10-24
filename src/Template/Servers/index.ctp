@@ -47,13 +47,16 @@ $this->loadHelper('Form', [
                                         <h3 class="pmd-card-title-text">
                                             <?= $server->name ?>
                                             <span class="badge badge-inverse"><?= count($server->plans) ?></span>
-                                            <?php if (true === $isAdmin): ?>
-                                                <div class="cta-actions pull-right">
+                                            <div class="cta-actions pull-right">
+                                                <a class="btn btn-sm pmd-ripple-effect btn-warning" href="<?= $this->Html->Url->build(['controller' => 'Servers', 'action' => 'edit', $server->id]) ?>">
+                                                    <?= __('edit') ?>
+                                                </a>
+                                                <?php if (true === $isAdmin): ?>
                                                     <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Servers', 'action' => 'delete', $server->id]) ?>">
                                                         <?= __('delete') ?>
                                                     </a>
-                                                </div>
-                                            <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
                                         </h3>
                                     </div>
                                 </div>

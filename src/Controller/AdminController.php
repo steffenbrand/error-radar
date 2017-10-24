@@ -33,7 +33,7 @@ class AdminController extends AppController
 
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Category',
+                'controller' => 'Categories',
                 'action' => 'index'
             ],
             'logoutRedirect' => [

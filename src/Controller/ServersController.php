@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Controller;
+use Cake\Core\Configure;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Response;
+use Cake\Utility\Security;
 
 /**
  * Class ServersController
@@ -37,6 +39,32 @@ class ServersController extends AdminController
     }
 
     /**
+     * Edit method
+     *
+     * @param string|null $id
+     * @return \Cake\Http\Response|null
+     * @throws RecordNotFoundException
+     */
+    public function edit($id = null)
+    {
+        $server = $this->Servers->get($id);
+        $encPassword = stream_get_contents($server->password);
+        $password = Security::decrypt($encPassword, Configure::read('Security.key'));
+        $server->password = $password;
+
+        if (true === $this->request->is('put') || true === $this->request->is('put')) {
+            $server = $this->Servers->patchEntity($server, $this->request->getData());
+            if ($this->Servers->save($server)) {
+                $this->Flash->success(__('The server has been edited.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The server could not be edited. Please, try again.'));
+        }
+
+        $this->set('server', $server);
+    }
+
+    /**
      * Delete method
      *
      * @param string|null $id
@@ -45,6 +73,10 @@ class ServersController extends AdminController
      */
     public function delete($id = null)
     {
+        if ($this->isAdmin() === false) {
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+
         $server = $this->Servers->get($id);
 
         if ($this->Servers->delete($server)) {
