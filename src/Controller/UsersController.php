@@ -56,7 +56,7 @@ class UsersController extends AdminController
 
         $user = $this->Users->get($id);
 
-        if (true === $this->request->is('put') || true === $this->request->is('put')) {
+        if (true === $this->request->is('put') || true === $this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been edited.'));

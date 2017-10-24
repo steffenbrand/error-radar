@@ -52,7 +52,7 @@ class ServersController extends AdminController
         $password = Security::decrypt($encPassword, Configure::read('Security.key'));
         $server->password = $password;
 
-        if (true === $this->request->is('put') || true === $this->request->is('put')) {
+        if (true === $this->request->is('put') || true === $this->request->is('post')) {
             $server = $this->Servers->patchEntity($server, $this->request->getData());
             if ($this->Servers->save($server)) {
                 $this->Flash->success(__('The server has been edited.'));

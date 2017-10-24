@@ -38,6 +38,29 @@ class CategoriesController extends AdminController
     }
 
     /**
+     * Edit method
+     *
+     * @param string|null $id
+     * @return \Cake\Http\Response|null
+     * @throws RecordNotFoundException
+     */
+    public function edit($id = null)
+    {
+        $category = $this->Categories->get($id);
+
+        if (true === $this->request->is('put') || true === $this->request->is('post')) {
+            $category = $this->Categories->patchEntity($category, $this->request->getData());
+            if ($this->Categories->save($category)) {
+                $this->Flash->success(__('The category has been edited.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The category could not be edited. Please, try again.'));
+        }
+
+        $this->set('category', $category);
+    }
+
+    /**
      * Delete method
      *
      * @param string|null $id
