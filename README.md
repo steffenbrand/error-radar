@@ -13,6 +13,8 @@ Error Radar is a dashboard to monitor plans from various build servers that you 
 
 ## Screenshots
 
+I'm sorry I had to blur out some details.
+
 #### Dashboard
 ![Dashboard](https://github.com/steffenbrand/error-radar/blob/master/screenshots/dashboard.jpg?raw=true)
 
