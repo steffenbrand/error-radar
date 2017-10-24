@@ -30,7 +30,7 @@ $this->loadHelper('Form', [
 </div>
 
 <div class="menu pmd-floating-action">
-    <a href="<?= $this->Html->Url->build(['controller' => 'Dashboard']) ?>" class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-success" data-title="<?= __('Back to dashboard') ?>">
+    <a href="<?= $this->Html->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>" class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-success" data-title="<?= __('Back to dashboard') ?>">
         <i class="material-icons pmd-sm">view_comfy</i>
     </a>
 </div>

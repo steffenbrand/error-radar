@@ -77,8 +77,8 @@ use Cake\Datasource\ResultSetInterface;
     <?php endif; ?>
 </div>
 
-<div class="pmd-floating-action">
-    <a href="<?= $this->Html->Url->build(['controller' => 'Categories']) ?>" class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" type="button" data-title="<?= __('Settings') ?>">
+<div class="menu pmd-floating-action" role="navigation">
+    <a href="<?= $this->Html->Url->build(['controller' => 'Categories', 'action' => 'index']) ?>" class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary" data-title="<?= __('Settings') ?>">
         <i class="material-icons pmd-sm">settings</i>
     </a>
 </div>
