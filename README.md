@@ -37,6 +37,8 @@ Go to your desired installation directory and run the following command, to inst
 composer create-project steffenbrand/error-radar error-radar
 ```
 
+Alternatively you could clone the git repository and run `composer install` afterwards.
+
 ### Create an empty database
 - Preferably MySQL
 - utf8_general_ci
