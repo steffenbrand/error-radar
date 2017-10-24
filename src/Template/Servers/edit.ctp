@@ -20,7 +20,7 @@ $this->loadHelper('Form', [
             <?= $this->element('Admin/tabs') ?>
             <div class="pmd-card-body">
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="servers-fixed">
+                    <div role="tabpanel" class="tab-pane active">
 
                         <?= $this->Flash->render() ?>
 

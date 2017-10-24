@@ -4,6 +4,7 @@ use Cake\View\View;
 
 /**
  * @var View $this
+ * @var bool $isAdmin
  */
 
 $path = $this->request->getUri()->getPath();

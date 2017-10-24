@@ -27,7 +27,7 @@ $this->loadHelper('Form', [
             <?= $this->element('Admin/tabs') ?>
             <div class="pmd-card-body">
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="plans-fixed">
+                    <div role="tabpanel" class="tab-pane active">
 
                         <?= $this->Flash->render() ?>
 
@@ -67,13 +67,16 @@ $this->loadHelper('Form', [
                                                 </i>
                                                 <?= $plan->server->name ?>
                                             </span>
-                                            <?php if (true === $isAdmin): ?>
-                                                <div class="cta-actions pull-right">
+                                            <div class="cta-actions pull-right">
+                                                <a class="btn btn-sm pmd-ripple-effect btn-warning" href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'edit', $plan->id]) ?>">
+                                                    <?= __('edit') ?>
+                                                </a>
+                                                <?php if (true === $isAdmin): ?>
                                                     <a class="btn btn-sm pmd-ripple-effect btn-danger" href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'delete', $plan->id]) ?>">
                                                         <?= __('delete') ?>
                                                     </a>
-                                                </div>
-                                            <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
                                         </h3>
                                     </div>
                                 </div>

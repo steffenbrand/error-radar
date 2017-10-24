@@ -41,6 +41,33 @@ class PlansController extends AdminController
     }
 
     /**
+     * Edit method
+     *
+     * @param string|null $id
+     * @return \Cake\Http\Response|null
+     * @throws RecordNotFoundException
+     */
+    public function edit($id = null)
+    {
+        $servers = $this->Servers->find('list')->all();
+        $categories = $this->Categories->find('list')->all();
+        $plan = $this->Plans->get($id);
+
+        if (true === $this->request->is('put') || true === $this->request->is('post')) {
+            $plan = $this->Plans->patchEntity($plan, $this->request->getData());
+            if ($this->Plans->save($plan)) {
+                $this->Flash->success(__('The plan has been edited.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The plan could not be edited. Please, try again.'));
+        }
+
+        $this->set('servers', $servers);
+        $this->set('categories', $categories);
+        $this->set('plan', $plan);
+    }
+
+    /**
      * Delete method
      *
      * @param string|null $id
