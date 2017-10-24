@@ -1,6 +1,6 @@
 {
     "name": "steffenbrand/error-radar",
-    "description": "Monitoring Dashboard for Bamboo Builds",
+    "description": "Error Radar is a fullscreen dashboard to monitor build plans from various build servers that you can use on a big screen in your office.",
     "homepage": "https://github.com/steffenbrand/error-radar",
     "type": "project",
     "license": "MIT",
