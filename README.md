@@ -92,4 +92,4 @@ Error Radar stores the build servers passwords (encrypted) in the database, so m
 
 - create and use accounts that have only READ access to the build servers REST API.
 - make it reachable only within your network.
-- seperate the application server from the database server.
+- separate the application server from the database server.
