@@ -64,6 +64,13 @@ use Cake\Datasource\ResultSetInterface;
                             </div>
                         </div>
                     <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="alert alert-warning" role="alert">
+                        <?= __('There are no plans in this category.') ?>
+                        <a href="<?= $this->Html->Url->build(['controller' => 'Plans', 'action' => 'index']) ?>">
+                            <?= __('Add plans now!') ?>
+                        </a>
+                    </div>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
