@@ -64,9 +64,15 @@
 .alert {
     border-radius: 2px;
 }
-.select2-selection__rendered {
-    font-size: 16px;
+.select2-container--bootstrap {
+    .select2-dropdown {
+        border: 2px solid #4285f4;
+    }
+    .select2-selection__rendered {
+        font-size: 16px;
+    }
 }
+
 .modal-header {
     h2 {
         &.pmd-card-title-text {

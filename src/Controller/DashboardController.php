@@ -59,9 +59,10 @@ class DashboardController extends AppController
                                 $errors[] = $plan;
                             }
                         } catch (\Exception $e) {
+                            $this->log($e->getMessage());
+
                             $plan->state = 'Error';
                             $errors[] = $plan;
-                            $this->log($e->getMessage());
                         }
                     }
                 }

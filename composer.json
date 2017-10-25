@@ -11,7 +11,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*",
-        "steffenbrand/bamboo-api-client": "^1.0.3"
+        "steffenbrand/bamboo-api-client": "^1.1.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",

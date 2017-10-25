@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "59fce58a6bcb16792ecc001b52ad1900",
+    "content-hash": "94719026fb5f64cb970dfa4d9fdfff2f",
     "packages": [
         {
             "name": "aura/intl",
@@ -796,16 +796,16 @@
         },
         {
             "name": "steffenbrand/bamboo-api-client",
-            "version": "1.0.3",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/steffenbrand/bamboo-api-client.git",
-                "reference": "2b2d921f9595b1d6fc9e6e18281ae466d1ecac3e"
+                "reference": "1b88af887fa21afe96320898e95504e5ae76ab1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/steffenbrand/bamboo-api-client/zipball/2b2d921f9595b1d6fc9e6e18281ae466d1ecac3e",
-                "reference": "2b2d921f9595b1d6fc9e6e18281ae466d1ecac3e",
+                "url": "https://api.github.com/repos/steffenbrand/bamboo-api-client/zipball/1b88af887fa21afe96320898e95504e5ae76ab1e",
+                "reference": "1b88af887fa21afe96320898e95504e5ae76ab1e",
                 "shasum": ""
             },
             "require": {
@@ -830,7 +830,7 @@
             ],
             "description": "Bamboo API Client",
             "homepage": "https://github.com/steffenbrand/bamboo-api-client",
-            "time": "2017-10-21T04:31:45+00:00"
+            "time": "2017-10-25T07:21:07+00:00"
         },
         {
             "name": "symfony/config",
