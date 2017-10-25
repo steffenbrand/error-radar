@@ -19,6 +19,11 @@ $this->loadHelper('Form', [
         <div class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form">
             <div class="pmd-card-body">
                 <?= $this->Flash->render() ?>
+
+                <div role="alert" class="alert alert-info ">
+                    <?= __('The password must be between 8 and 30 characters long and have at lest one uppercase character, one lowercase character, one digit and finally one special character.') ?>
+                </div>
+
                 <?= $this->Form->create() ?>
                     <?= $this->Form->control('password', ['type' => 'password', 'class' => 'form-control']) ?>
                     <?= $this->Form->control('password-repeat', ['type' => 'password', 'class' => 'form-control']) ?>

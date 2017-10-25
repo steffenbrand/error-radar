@@ -61,7 +61,15 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
-            ->add('password', ['length' => ['rule' => ['minLength', 8], 'message' => 'The password has to be at least 8 characters long.']]);
+            ->add('password', [
+                'validFormat' => [
+                    'rule' => [
+                        'custom',
+                        '/(?=^.{8,30}$)(?=.*[!@#\/\\$%^&*,;:]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/'
+                    ],
+                    'message' => 'The password must be between 8 and 30 characters long and have at lest one uppercase character, one lowercase character, one digit and finally one special character.'
+                ]
+            ]);
 
         $validator
             ->requirePresence('role', 'create')
@@ -74,7 +82,15 @@ class UsersTable extends Table
     public function validationPassword(Validator $validator)
     {
         $validator
-            ->add('password', ['length' => ['rule' => ['minLength', 8], 'message' => 'The password has to be at least 8 characters long.']])
+            ->add('password', [
+                'validFormat' => [
+                    'rule' => [
+                        'custom',
+                        '/(?=^.{8,30}$)(?=.*[!@#\/\\$%^&*,;:]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/'
+                    ],
+                    'message' => 'The password must be between 8 and 30 characters long and have at lest one uppercase character, one lowercase character, one digit and finally one special character.'
+                ]
+            ])
             ->notEmpty('password');
 
         return $validator;
