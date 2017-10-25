@@ -66,18 +66,28 @@
 }
 .select2-container--bootstrap {
     .select2-dropdown {
-        border: 2px solid #4285f4;
+        border-top: 2px solid #4285f4;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-radius: 0 0 2px 2px;
     }
     .select2-selection__rendered {
         font-size: 16px;
     }
 }
-
 .modal-header {
     h2 {
         &.pmd-card-title-text {
             color: #333;
             font-weight: 400;
+        }
+    }
+}
+.pmd-tabs {
+    .nav-tabs {
+        a {
+            cursor: pointer !important;
         }
     }
 }

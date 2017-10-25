@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use Cake\Core\Configure;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Response;
