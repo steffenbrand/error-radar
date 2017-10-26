@@ -52,7 +52,7 @@ class ServersTable extends Table
      * @param Validator $validator Validator instance.
      * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->integer('id')
@@ -94,7 +94,7 @@ class ServersTable extends Table
      * @param RulesChecker $rules The rules object to be modified.
      * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['name']));
 
@@ -107,7 +107,7 @@ class ServersTable extends Table
      * @return ResultSetInterface
      * @throws \RuntimeException
      */
-    public function findServersContainingPlans()
+    public function findServersContainingPlans(): ResultSetInterface
     {
         return $this
             ->find('all', ['contain' => ['Plans']])
@@ -116,12 +116,16 @@ class ServersTable extends Table
     }
 
     /**
+     * Before save hook.
+     *
      * @param $event
      * @param Server $entity
      * @param $options
      * @return mixed
+     * @throws \InvalidArgumentException
      */
-    public function beforeSave($event, $entity, $options) {
+    public function beforeSave($event, $entity, $options)
+    {
         if (strlen($entity->password) > 0) {
             $entity->password =  Security::encrypt($entity->password, Configure::read('Security.key'));
         }

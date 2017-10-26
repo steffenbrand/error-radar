@@ -23,6 +23,7 @@ class PlansController extends AdminController
      * Index method
      *
      * @return Response|null
+     * @throws \RuntimeException
      */
     public function index()
     {
@@ -75,7 +76,7 @@ class PlansController extends AdminController
      *
      * @param string|null $id
      * @return \Cake\Http\Response|null
-     * @throws RecordNotFoundException
+     * @throws RecordNotFoundException|\RuntimeException
      */
     public function edit($id = null)
     {
@@ -127,9 +128,9 @@ class PlansController extends AdminController
      * @param Server $server
      * @param Plan[]|ResultSetInterface $plans
      * @return array
-     * @throws BambooRequestException|RecordNotFoundException|\RuntimeException
+     * @throws BambooRequestException|RecordNotFoundException|\RuntimeException|\InvalidArgumentException
      */
-    private function getPlanDropdownList($server, $plans)
+    private function getPlanDropdownList($server, $plans): array
     {
         $encPassword = stream_get_contents($server->password);
         $password = Security::decrypt($encPassword, Configure::read('Security.key'));
@@ -170,10 +171,10 @@ class PlansController extends AdminController
      * Get currently selected server.
      *
      * @param $serverId
-     * @return Server|null
+     * @return Server
      * @throws \RuntimeException
      */
-    private function getSelectedServer($serverId)
+    private function getSelectedServer($serverId): Server
     {
         $selectedServer = null;
 

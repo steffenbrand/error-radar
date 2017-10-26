@@ -56,7 +56,7 @@ class PlansTable extends Table
      * @param Validator $validator Validator instance.
      * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->integer('id')
@@ -94,7 +94,7 @@ class PlansTable extends Table
      * @param RulesChecker $rules The rules object to be modified.
      * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['key']));
         $rules->add($rules->existsIn(['category_id'], 'Categories'));
@@ -109,7 +109,7 @@ class PlansTable extends Table
      * @return ResultSetInterface
      * @throws \RuntimeException
      */
-    public function findPlansContainingCategoriesAndServers()
+    public function findPlansContainingCategoriesAndServers(): ResultSetInterface
     {
         return $this
             ->find('all', ['contain' => ['Categories', 'Servers']])

@@ -30,6 +30,7 @@ class UsersTable extends Table
      *
      * @param array $config The configuration for the Table.
      * @return void
+     * @throws \RuntimeException
      */
     public function initialize(array $config)
     {
@@ -48,7 +49,7 @@ class UsersTable extends Table
      * @param Validator $validator Validator instance.
      * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->integer('id')
@@ -79,7 +80,11 @@ class UsersTable extends Table
         return $validator;
     }
 
-    public function validationPassword(Validator $validator)
+    /**
+     * @param Validator $validator
+     * @return Validator
+     */
+    public function validationPassword(Validator $validator): Validator
     {
         $validator
             ->add('password', [
@@ -103,7 +108,7 @@ class UsersTable extends Table
      * @param RulesChecker $rules The rules object to be modified.
      * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['username']));
 

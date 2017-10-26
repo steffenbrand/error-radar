@@ -50,7 +50,7 @@ class CategoriesTable extends Table
      * @param Validator $validator Validator instance.
      * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->integer('id')
@@ -72,7 +72,7 @@ class CategoriesTable extends Table
      * @param RulesChecker $rules The rules object to be modified.
      * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['name']));
 
@@ -85,7 +85,7 @@ class CategoriesTable extends Table
      * @return ResultSetInterface
      * @throws \RuntimeException
      */
-    public function findCategoriesContainingPlans()
+    public function findCategoriesContainingPlans(): ResultSetInterface
     {
         return $this
             ->find('all', ['contain' => ['Plans']])
@@ -99,7 +99,7 @@ class CategoriesTable extends Table
      * @return ResultSetInterface
      * @throws \RuntimeException
      */
-    public function findCategoriesContainingPlansAndServers()
+    public function findCategoriesContainingPlansAndServers(): ResultSetInterface
     {
         return $this
             ->find('all', ['contain' => ['Plans' => 'Servers']])

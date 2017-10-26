@@ -17,6 +17,7 @@ class UsersController extends AdminController
      * Index method
      *
      * @return Response|null
+     * @throws \RuntimeException
      */
     public function index()
     {

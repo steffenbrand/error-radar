@@ -44,7 +44,7 @@ class ServersController extends AdminController
      *
      * @param string|null $id
      * @return \Cake\Http\Response|null
-     * @throws RecordNotFoundException
+     * @throws RecordNotFoundException|\InvalidArgumentException
      */
     public function edit($id = null)
     {

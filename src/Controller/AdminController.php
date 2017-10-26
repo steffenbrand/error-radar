@@ -55,7 +55,7 @@ class AdminController extends AppController
     {
         $user = $this->Auth->user();
 
-        if (isset($user['role']) && 'admin' === $user['role']) {
+        if (true === isset($user['role']) && 'admin' === $user['role']) {
             return true;
         }
 
