@@ -13,13 +13,8 @@ Error Radar is a dashboard to monitor plans from various build servers that you 
 
 ## Screenshots
 
-I'm sorry I had to blur out some details.
-
 #### Dashboard
 ![Dashboard](https://github.com/steffenbrand/error-radar/blob/master/screenshots/dashboard.jpg?raw=true)
-
-#### Dashboard in error state (background color permanently changes)
-![Dashboard error state](https://github.com/steffenbrand/error-radar/blob/master/screenshots/dashboard-error.jpg?raw=true)
 
 #### Settings
 ![Settings](https://github.com/steffenbrand/error-radar/blob/master/screenshots/settings.jpg?raw=true)
