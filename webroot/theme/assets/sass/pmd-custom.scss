@@ -92,6 +92,12 @@
     }
 }
 body {
+    &.dashboard {
+        background: #333;
+        h2 {
+            color: #fff;
+        }
+    }
     &.errors {
         -webkit-animation: background 5s cubic-bezier(1,0,0,1) infinite;
         animation: background 5s cubic-bezier(1,0,0,1) infinite;

@@ -7,6 +7,8 @@ use App\Model\Entity\Plan;
  * @var View $this
  * @var Plan[] $errors
  */
+
+$path = $this->request->getUri()->getPath();
 ?>
 
 <?= $this->Html->docType() ?>
@@ -14,7 +16,7 @@ use App\Model\Entity\Plan;
 <head>
     <?= $this->Html->charset() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?php if ('/' === $this->request->getUri()->getPath()): ?>
+    <?php if ('/' === $path): ?>
         <meta http-equiv="refresh" content="30">
     <?php endif; ?>
     <title>Error Radar</title>
@@ -26,7 +28,7 @@ use App\Model\Entity\Plan;
     <link rel="mask-icon" href="/theme/dist/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#4285f4">
 </head>
-<body <?php if (true === isset($errors) && count($errors) > 0): ?>class="errors"<?php endif; ?>>
+<body class="<?php if (true === isset($errors) && count($errors) > 0): ?>errors<?php endif; ?> <?php if ('/' === $path): ?>dashboard<?php endif; ?>">
     <section id="pmd-main">
         <div class="pmd-content" id="content">
             <?= $this->fetch('content') ?>
