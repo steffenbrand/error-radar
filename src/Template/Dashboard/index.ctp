@@ -25,7 +25,7 @@ use Cake\Datasource\ResultSetInterface;
                         $errorsClass = 'alert-warning';
                     }
                 ?>
-                <div role="alert" class="alert <?= $errorsClass ?>">
+                <div role="alert" class="alert <?= $errorsClass ?> alert-small">
                     <strong><?= $plan->key ?></strong>
                     <?= $plan->error_text ?>
                 </div>

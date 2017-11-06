@@ -16,9 +16,6 @@ $path = $this->request->getUri()->getPath();
 <head>
     <?= $this->Html->charset() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?php if ('/' === $path): ?>
-        <meta http-equiv="refresh" content="30">
-    <?php endif; ?>
     <title>Error Radar</title>
     <?= $this->Html->css('/theme/dist/css/main') ?>
     <link rel="apple-touch-icon" sizes="180x180" href="/theme/dist/images/favicon/apple-touch-icon.png">
@@ -28,7 +25,7 @@ $path = $this->request->getUri()->getPath();
     <link rel="mask-icon" href="/theme/dist/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#4285f4">
 </head>
-<body class="<?php if (true === isset($errors) && count($errors) > 0): ?>errors<?php endif; ?> <?php if ('/' === $path): ?>dashboard<?php endif; ?>">
+<body class="<?php if ('/' === $path): ?>dashboard<?php endif; ?>">
     <section id="pmd-main">
         <div class="pmd-content" id="content">
             <?= $this->fetch('content') ?>
