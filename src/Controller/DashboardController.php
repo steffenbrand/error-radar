@@ -51,7 +51,7 @@ class DashboardController extends AppController
 
                             $result = $bambooClient->getLatestResultByKey($plan->key);
 
-                            $plan->name = $result->getPlan()->getShortName();
+                            $plan->name = empty($plan->name) ? $result->getPlan()->getShortName() : $plan->name;
                             $plan->state = $result->getState();
                             $plan->number = $result->getNumber();
 

@@ -17,11 +17,10 @@
     }
     .pmd-card {
         position: relative;
-        min-height: 220px;
         margin-bottom: 10px;
         .pmd-card-icon {
             display: block;
-            padding: 16px 0;
+            padding: 16px 0 4px;
             text-align: center;
             font-size: 60px;
             line-height: 1;
@@ -35,10 +34,6 @@
             margin-bottom: 0;
             h3 {
                 margin-top: 0;
-                text-align: center;
-                font-size: 24px;
-                line-height: 1.2em;
-                font-weight: normal;
             }
             h4 {
                 margin-bottom: 0;
@@ -144,6 +139,17 @@ body {
         background: #333;
         h2 {
             color: #fff;
+        }
+        .pmd-card {
+            min-height: 220px;
+            .pmd-card-title {
+                h3 {
+                    text-align: center;
+                    font-size: 24px;
+                    line-height: 1.2em;
+                    font-weight: normal;
+                }
+            }
         }
     }
 }

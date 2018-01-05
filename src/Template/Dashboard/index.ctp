@@ -11,18 +11,6 @@ use Cake\Datasource\ResultSetInterface;
  * @var string $columnClass
  * @var Plan[] $errors
  */
-$jobMapping = [
-    'Generate Missing Logistics Shipments' => 'Fehlende Label nachgenerieren',
-    'Cache Customer Api Data' => 'Kundendaten zwischenspeichern',
-    'Calculate Routing Scores' => 'Routingscores berechnen',
-    'Close Damages Claims Winsure' => 'Schäden in Winsure schließen',
-    'Download and process Invoices (DHL, UPS)' => 'Logistikrechnungen verarbeiten',
-    'Fetch Logistics Status' => 'Logistikstatus abfragen und verarbeiten',
-    'Deploy Tag or Commit-ID' => 'Systemupdate installieren'
-];
-
-
-
 ?>
 
 <?php if (count($errors) > 0): ?>
@@ -76,7 +64,7 @@ $jobMapping = [
                                                 </span>
                                                 <?php if (null !== $plan->name): ?>
                                                     <h3 class="pmd-card-title-text">
-                                                        <?= $jobMapping[$plan->name] ?>
+                                                        <?= $plan->name ?>
                                                         <?php if (null !== $plan->number && count($category->plans) > 12): ?>
                                                             <span class="badge badge-inverse"><?= $plan->number ?></span>
                                                         <?php endif; ?>

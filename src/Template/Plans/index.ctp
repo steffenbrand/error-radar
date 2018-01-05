@@ -37,6 +37,7 @@ $this->loadHelper('Form', [
                         <?php if ($categories->count() > 0 && $servers->count() > 0): ?>
                             <div class="well">
                                 <?= $this->Form->create($plan) ?>
+                                    <?= $this->Form->control('name', ['class' => 'form-control']) ?>
                                     <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
                                     <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
                                     <?= $this->Form->control('key', ['label' => __('Plan'), 'type' => 'select', 'options' => $planDropdownList, 'class' => 'form-control']) ?>
