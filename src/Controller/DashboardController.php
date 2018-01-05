@@ -69,6 +69,8 @@ class DashboardController extends AppController
             }
         }
 
+        $columnClass = 'col-xs-12';
+
         $this->set('categories', $categories);
         $this->set('columnClass', $columnClass);
         $this->set('errors', $errors);
