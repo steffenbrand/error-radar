@@ -29,11 +29,6 @@ class DashboardController extends AppController
         $categories = $this->Categories->findCategoriesContainingPlansAndServers();
 
         if ($categories->count() > 0) {
-            $columnClass = sprintf(
-                'col-md-%u',
-                floor(12/$categories->count())
-            );
-
             foreach ($categories as $category) {
                 /** @var Category $category */
                 if (count($category->plans) > 0) {
@@ -69,10 +64,7 @@ class DashboardController extends AppController
             }
         }
 
-        $columnClass = 'col-xs-12';
-
         $this->set('categories', $categories);
-        $this->set('columnClass', $columnClass);
         $this->set('errors', $errors);
     }
 }
