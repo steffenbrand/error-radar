@@ -1,6 +1,6 @@
 #content {
     opacity: 0;
-    @include transition(.2s);
+    @include transition(.4s);
 }
 .pmd-content {
     padding-top: 0;
@@ -89,7 +89,6 @@
                 color: lighten($info-color, 30%); // #ff9272;
             }
         }
-
     }
 }
 .material-icons.pmd-xxs {
@@ -188,6 +187,4 @@ $classMapping: (
             #{$attribute}: $i*10px;
         }
     }
-
-
 }
