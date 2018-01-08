@@ -5,6 +5,7 @@ use Cake\View\View;
 /**
  * @var View $this
  * @var string $message
+ * @var array $params
  */
 
 $class = 'message';

@@ -16,6 +16,7 @@ $path = $this->request->getUri()->getPath();
 <head>
     <?= $this->Html->charset() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Error Radar</title>
     <?= $this->Html->css('/theme/dist/css/main') ?>
     <link rel="apple-touch-icon" sizes="180x180" href="/theme/dist/images/favicon/apple-touch-icon.png">

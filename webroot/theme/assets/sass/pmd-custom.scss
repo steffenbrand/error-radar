@@ -1,6 +1,6 @@
 #content {
     opacity: 0;
-    @include transition(.2s);
+    @include transition(.4s);
 }
 .pmd-content {
     padding-top: 0;
@@ -16,22 +16,18 @@
         }
     }
     .pmd-card {
+        position: relative;
         margin-bottom: 10px;
-        &.Successful {
-            background-color: $successful-color;
-            color: #fff;
-        }
-        &.Failed {
-            background-color: $failed-color;
-            color: #fff;
-        }
-        &.Error {
-            background-color: $error-color;
-            color: #fff;
-        }
-        &.Info {
-            background-color: $info-color;
-            color: #fff;
+        .pmd-card-icon {
+            display: block;
+            padding: 16px 0 4px;
+            text-align: center;
+            font-size: 60px;
+            line-height: 1;
+            & > i {
+                font-size: 60px;
+                line-height: 1;
+            }
         }
         .pmd-card-title {
             padding: 10px;
@@ -49,6 +45,48 @@
                     padding: 2px 12px 4px 12px;
                     margin-top: -3px;
                 }
+            }
+        }
+        .pmd-card-footer {
+            display: block;
+            padding: 0;
+            position: absolute;
+            bottom: 10px;
+            font-size: 16px;
+            &.left {
+                left: 10px;
+            }
+            &.right {
+                text-align: right;
+                right: 10px;
+            }
+        }
+        &.successful {
+            background-color: $successful-color;
+            color: #fff;
+            .pmd-card-footer {
+                color: lighten($successful-color, 30%); //#6ecd79;
+            }
+        }
+        &.failed {
+            background-color: $failed-color;
+            color: #fff;
+            .pmd-card-footer {
+                color: lighten($failed-color, 30%); //#ff9272;
+            }
+        }
+        &.error {
+            background-color: $error-color;
+            color: #fff;
+            .pmd-card-footer {
+                color: lighten($error-color, 30%); //#ff9272;
+            }
+        }
+        &.info {
+            background-color: $info-color;
+            color: #fff;
+            .pmd-card-footer {
+                color: lighten($info-color, 30%); // #ff9272;
             }
         }
     }
@@ -100,6 +138,53 @@ body {
         background: #333;
         h2 {
             color: #fff;
+        }
+        .pmd-card {
+            min-height: 220px;
+            .pmd-card-title {
+                h3 {
+                    text-align: center;
+                    font-size: 24px;
+                    line-height: 1.2em;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
+.category-container {
+    position: relative;
+    padding: 30px 20px 0 50px;
+    margin-bottom: -30px;
+    .category-label {
+        position: absolute;
+        left: -108px;
+        top: 130px;
+        transform: rotate(-90deg);
+        width: 250px;
+        & > div {
+            text-align: right;
+            h2 {
+                font-size: 36px;
+                color: #666;
+            }
+        }
+    }
+}
+
+/*
+ *  Create padding/margin classes
+ */
+$classMapping: (
+    pb: padding-bottom,
+    pt: padding-top,
+    mb: margin-bottom,
+    mt: margin-top
+);
+@for $i from 1 through 5 {
+    @each $class, $attribute in $classMapping {
+        .#{$class}-#{$i*10} {
+            #{$attribute}: $i*10px;
         }
     }
 }
