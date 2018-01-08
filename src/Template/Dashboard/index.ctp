@@ -12,27 +12,6 @@ use Cake\Datasource\ResultSetInterface;
  */
 ?>
 
-<?php if (count($errors) > 0): // TODO: SHOULD WE DISPLAY ERROR TEXT?!?>
-    <!--div class="row">
-        <div class="col col-sm-12">
-            <h2><?= __('Errors') ?></h2>
-            <?php foreach ($errors as $plan): ?>
-                <?php
-                    if ('Failed' === $plan->state) {
-                        $errorsClass = 'alert-danger';
-                    } else {
-                        $errorsClass = 'alert-warning';
-                    }
-                ?>
-                <div role="alert" class="alert <?= $errorsClass ?> alert-small">
-                    <strong><?= $plan->key ?></strong>
-                    <?= $plan->error_text ?>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div-->
-<?php endif; ?>
-
 <div class="row">
     <?php if ($categories->count() > 0): ?>
         <?php foreach ($categories as $category): ?>

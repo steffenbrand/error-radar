@@ -80,10 +80,6 @@ class PlansTable extends Table
             ->integer('number')
             ->allowEmpty('number');
 
-        $validator
-            ->scalar('error_text')
-            ->allowEmpty('error_text');
-
         return $validator;
     }
 

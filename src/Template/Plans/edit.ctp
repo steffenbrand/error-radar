@@ -33,7 +33,6 @@ $this->loadHelper('Form', [
                             <?= $this->Form->create($plan) ?>
                                 <?= $this->Form->control('name', ['class' => 'form-control']) ?>
                                 <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
-                                <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
                                 <?= $this->Form->button(__('Edit plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
                             <?= $this->Form->end() ?>
                         </div>

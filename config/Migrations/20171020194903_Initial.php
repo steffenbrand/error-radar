@@ -26,12 +26,7 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
-            ->addIndex(
-                [
-                    'name',
-                ],
-                ['unique' => true]
-            )
+            ->addIndex(['name'], ['unique' => true])
             ->create();
 
         $this->table('servers')
@@ -67,12 +62,7 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
-            ->addIndex(
-                [
-                    'name',
-                ],
-                ['unique' => true]
-            )
+            ->addIndex(['name'], ['unique' => true])
             ->create();
 
         $this->table('plans')
@@ -121,22 +111,9 @@ class Initial extends AbstractMigration
                 'null' => false,
                 'signed' => false,
             ])
-            ->addIndex(
-                [
-                    'key',
-                ],
-                ['unique' => true]
-            )
-            ->addIndex(
-                [
-                    'category_id',
-                ]
-            )
-            ->addIndex(
-                [
-                    'server_id',
-                ]
-            )
+            ->addIndex(['key'], ['unique' => true])
+            ->addIndex(['category_id'])
+            ->addIndex(['server_id'])
             ->create();
 
         $this->table('plans')
@@ -197,12 +174,7 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => false,
             ])
-            ->addIndex(
-                [
-                    'username',
-                ],
-                ['unique' => true]
-            )
+            ->addIndex(['username'], ['unique' => true])
             ->create();
 
         $this->table('sessions', ['id' => false, 'primary_key' => ['id']])
@@ -227,12 +199,8 @@ class Initial extends AbstractMigration
     public function down()
     {
         $this->table('plans')
-            ->dropForeignKey(
-                'category_id'
-            )
-            ->dropForeignKey(
-                'server_id'
-            );
+            ->dropForeignKey('category_id')
+            ->dropForeignKey('server_id');
 
         $this->dropTable('categories');
         $this->dropTable('servers');

@@ -23,9 +23,6 @@ class DashboardController extends AppController
      */
     public function index()
     {
-        $columnClass = null;
-        $errors = [];
-
         $categories = $this->Categories->findCategoriesContainingPlansAndServers();
 
         if ($categories->count() > 0) {
@@ -49,15 +46,9 @@ class DashboardController extends AppController
                             $plan->name = empty($plan->name) ? $result->getPlan()->getShortName() : $plan->name;
                             $plan->state = $result->getState();
                             $plan->number = $result->getNumber();
-
-                            if ($plan->state === 'Failed') {
-                                $errors[] = $plan;
-                            }
                         } catch (\Exception $e) {
                             $this->log($e->getMessage());
-
                             $plan->state = 'Error';
-                            $errors[] = $plan;
                         }
                     }
                 }
@@ -65,6 +56,5 @@ class DashboardController extends AppController
         }
 
         $this->set('categories', $categories);
-        $this->set('errors', $errors);
     }
 }

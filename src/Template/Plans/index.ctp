@@ -41,7 +41,6 @@ $this->loadHelper('Form', [
                                     <?= $this->Form->control('server_id', ['type' => 'select', 'options' => $servers]) ?>
                                     <?= $this->Form->control('category_id', ['type' => 'select', 'options' => $categories]) ?>
                                     <?= $this->Form->control('key', ['label' => __('Plan'), 'type' => 'select', 'options' => $planDropdownList, 'class' => 'form-control']) ?>
-                                    <?= $this->Form->control('error_text', ['class' => 'form-control']) ?>
                                     <?= $this->Form->button(__('Add plan'), ['class' => 'btn pmd-btn-raised pmd-ripple-effect btn-success']) ?>
                                 <?= $this->Form->end() ?>
                             </div>
