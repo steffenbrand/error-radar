@@ -142,7 +142,7 @@ class PlansController extends AdminController
             10.0
         );
 
-        $plansFromServer = $bambooClient->getPlanList();
+        $plansFromServer = $bambooClient->getPlanList(100);
 
         if (count($plansFromServer) < 1) {
             throw new \RuntimeException('Received empty plan list from server.');
